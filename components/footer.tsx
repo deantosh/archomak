@@ -2,27 +2,27 @@ import Link from "next/link";
 import { Github, Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
-
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
     <footer className="border-t border-border bg-background">
       <div className="max-w-7xl mx-auto px-4 py-16">
-        
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
+            <div className="flex items-center gap-3 mb-4">
               <Image
-                src='/logo/luda.png'
-                alt="company logo"
-                width={120}
-                height={60}  
-                className="object-contain"
+                src="/logo/favico.png"
+                alt="Archomak logo"
+                width={40}
+                height={40}
+                className="h-10 w-10 object-contain"
               />
+              <span className="text-base font-semibold tracking-wide text-foreground">
+                Archomak
+              </span>
             </div>
             <p className="text-sm text-muted-foreground">
               Innovating at the intersection of human creativity and advanced
@@ -80,41 +80,57 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-foreground mb-4">Follow</h3>
             <div className="flex gap-3">
-              <a className="p-2 rounded-lg hover:bg-muted transition-colors" href="#">
-                <Twitter size={18} className="text-muted-foreground hover:text-accent" />
+              <a
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                href="#"
+              >
+                <Twitter
+                  size={18}
+                  className="text-muted-foreground hover:text-accent"
+                />
               </a>
-              <a className="p-2 rounded-lg hover:bg-muted transition-colors" href="#">
-                <Linkedin size={18} className="text-muted-foreground hover:text-accent" />
+              <a
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                href="#"
+              >
+                <Linkedin
+                  size={18}
+                  className="text-muted-foreground hover:text-accent"
+                />
               </a>
-              <a className="p-2 rounded-lg hover:bg-muted transition-colors" href="#">
-                <Github size={18} className="text-muted-foreground hover:text-accent" />
+              <a
+                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                href="#"
+              >
+                <Github
+                  size={18}
+                  className="text-muted-foreground hover:text-accent"
+                />
               </a>
             </div>
           </div>
-
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-muted-foreground">
-            © {currentYear} LuDa Tech. All rights reserved.
+            © {currentYear} Archomak. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link
-              href="#"
+              href="/privacy"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
-              href="#"
+              href="/terms"
               className="text-sm text-muted-foreground hover:text-foreground transition-colors"
             >
               Terms of Service
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );

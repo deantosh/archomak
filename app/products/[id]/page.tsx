@@ -11,14 +11,14 @@ import Image from "next/image";
 const PRODUCTS = [
   {
     id: 1,
-    title: "Luda lens",
+    title: "LuDa Lens",
     description:
       "Capture and transform handwritten or printed documents instantly with AI-powered OCR.",
     longDescription:
-      "Luda Lens lets you snap any handwritten or printed document and transform it into clean, structured digital data in seconds. From notes and invoices to receipts, forms, and contracts, the app intelligently reads and processes every detail using advanced AI-powered OCR.Simply capture a page, and Luda Lens automatically extracts text, detects key fields, and organizes everything into ready-to-use formats like Excel, PDF, or structured text.",
+      "LuDa Lens lets you snap any handwritten or printed document and transform it into clean, structured digital data in seconds. From notes and invoices to receipts, forms, and contracts, the app intelligently reads and processes every detail using advanced AI-powered OCR.Simply capture a page, and LuDa Lens automatically extracts text, detects key fields, and organizes everything into ready-to-use formats like Excel, PDF, or structured text.",
     category: "Data Capture",
     tags: ["Web", "AI", "Automation"],
-    image: "/ludalens.png",
+    // image: "/ludalens.png",
     features: [
       "AI-powered automation",
       "Multi-platform integration",
@@ -40,142 +40,61 @@ const PRODUCTS = [
     ],
   },
   {
-    id: 2,
-    title: "DataSync Pro",
+    id: 7,
+    title: "Kunanyesha",
     description:
-      "Enterprise-grade data synchronization across all your systems in real-time.",
+      "Automated weekly county weather reporting with geospatial analysis and distribution workflows for Kenya's 47 counties.",
     longDescription:
-      "Keep your data perfectly synchronized across cloud, on-premise, and hybrid environments. Military-grade encryption ensures your information stays secure.",
-    category: "Enterprise",
-    tags: ["B2B", "Cloud", "Enterprise"],
-    image: "/data-synchronization-analytics.jpg",
+      "Kunanyesha streamlines weekly county weather reporting by combining GRIB processing, integrated observations, geospatial visualization, automation, and distribution into one operational platform. Teams can generate comprehensive reports with a single click, manage county and ward-level data views, monitor pipelines in real time, configure schedules and delivery settings, and review archived outputs from a centralized dashboard built for Kenyan weather reporting operations.",
+    category: "Climate Tech",
+    tags: ["Web", "Weather", "Geospatial", "Automation"],
+    // image: "/kunanyesha.png",
     features: [
-      "Real-time sync",
-      "Encryption",
-      "Multi-region support",
-      "API-first architecture",
+      "Automated weekly and on-demand report generation",
+      "County-level and ward-level geospatial views",
+      "Monitoring, logs, and pipeline visibility",
+      "Archive access with operational configuration tools",
     ],
-    pricing: "Custom enterprise pricing",
+    pricing: "Starting at KES 1,294/month",
     fullFeatures: [
-      "Real-time bidirectional data synchronization",
-      "Military-grade AES-256 encryption",
-      "Multi-region data centers",
-      " 99.99% uptime SLA",
-      "Advanced conflict resolution",
-      "Comprehensive audit logs",
-      "Custom data transformation",
-      "Dedicated account management",
+      "Single-click generation of comprehensive weekly county weather reports",
+      "GRIB data processing with integrated real-time observations",
+      "Interactive county-level and ward-level geospatial visualizations",
+      "System health monitoring, pipeline status tracking, and anomaly alerts",
+      "Manual report generation with flexible scheduling controls",
+      "Historical archive access with filtering for previous reports",
+      "Configuration tools for GRIB storage, scheduling, and email distribution",
+      "Data management for shapefiles, observations, and validation workflows",
+      "Detailed operational logs and diagnostics for troubleshooting",
+      "Coverage designed for all 47 Kenyan counties",
     ],
   },
   {
-    id: 3,
-    title: "SecureVault",
+    id: 8,
+    title: "Book & Pay",
     description:
-      "Zero-knowledge encryption and secure storage for sensitive data.",
+      "Booking and payment software for Ghanaian service businesses, combining online scheduling with instant mobile money and card payments.",
     longDescription:
-      "End-to-end encrypted storage with zero-knowledge architecture. Your data is yours alone—we can't access it even if we wanted to.",
-    category: "Security",
-    tags: ["Security", "Web", "Mobile"],
-    image: "/secure-data-vault-encryption.jpg",
+      "Book & Pay Ghana gives service businesses a professional online presence where customers can book appointments and pay instantly through mobile money or card. The product reduces manual coordination by letting businesses share a single booking link while handling scheduling and payments from one simple dashboard tailored to local service workflows.",
+    category: "Commerce",
+    tags: ["Web", "Bookings", "Payments", "Mobile Money"],
+    // image: "/bookandpay.png",
     features: [
-      "Zero-knowledge architecture",
-      "End-to-end encryption",
-      "Military-grade security",
-      "Cross-device sync",
+      "Shareable booking page for customers",
+      "Instant mobile money and card payments",
+      "Central dashboard for bookings and payments",
+      "Built for service businesses in Ghana",
     ],
-    pricing: "Starting at $9.99/month",
+    pricing: "Private beta",
     fullFeatures: [
-      "Zero-knowledge encryption architecture",
-      "End-to-end encrypted communications",
-      "Military-grade AES-256 security",
-      "Cross-device synchronization",
-      "Biometric authentication",
-      "Advanced sharing permissions",
-      "Secure file collaboration",
-      "Automatic backup and recovery",
-    ],
-  },
-  {
-    id: 4,
-    title: "InsightAI",
-    description:
-      "Advanced analytics and predictive intelligence for your business data.",
-    longDescription:
-      "Transform raw data into actionable insights with our machine learning-powered analytics engine. Make smarter decisions faster.",
-    category: "Analytics",
-    tags: ["AI", "Analytics", "Enterprise"],
-    image: "/business-analytics-dashboard-ai.jpg",
-    features: [
-      "Predictive analytics",
-      "Custom dashboards",
-      "Real-time alerts",
-      "Natural language queries",
-    ],
-    pricing: "Starting at $199/month",
-    fullFeatures: [
-      "Advanced predictive analytics",
-      "Custom dashboard creation",
-      "Real-time alerts and notifications",
-      "Natural language query interface",
-      "Machine learning model training",
-      "Data visualization library",
-      "Export and reporting capabilities",
-      "Integration with major BI tools",
-    ],
-  },
-  {
-    id: 5,
-    title: "DevOps Hub",
-    description:
-      "Unified platform for CI/CD, deployment, and infrastructure management.",
-    longDescription:
-      "Streamline your entire development lifecycle with our comprehensive DevOps platform. Deploy with confidence, scale effortlessly.",
-    category: "Developer",
-    tags: ["DevOps", "Web", "B2B"],
-    image: "/devops-deployment-pipeline.jpg",
-    features: [
-      "CI/CD pipelines",
-      "Container orchestration",
-      "Infrastructure as code",
-      "Performance monitoring",
-    ],
-    pricing: "Starting at $99/month",
-    fullFeatures: [
-      "Complete CI/CD pipeline management",
-      "Docker and Kubernetes support",
-      "Infrastructure as code capabilities",
-      "Performance monitoring and alerts",
-      "Automated testing integration",
-      "Multi-environment support",
-      "Git integration",
-      "Team collaboration features",
-    ],
-  },
-  {
-    id: 6,
-    title: "TeamCollab",
-    description: "All-in-one collaboration suite for distributed teams.",
-    longDescription:
-      "Connect your teams with video, chat, file sharing, and project management—all in one unified platform.",
-    category: "Collaboration",
-    tags: ["Collaboration", "Web", "Mobile"],
-    image: "/team-collaboration-platform.png",
-    features: [
-      "Video conferencing",
-      "Real-time chat",
-      "File sharing",
-      "Project management",
-    ],
-    pricing: "Starting at $12/user/month",
-    fullFeatures: [
-      "HD video and audio conferencing",
-      "Real-time messaging and chat",
-      "File sharing and collaboration",
-      "Project management tools",
-      "Calendar integration",
-      "Screen sharing capabilities",
-      "Recording and transcription",
-      "Advanced permission controls",
+      "Public booking page businesses can share with customers",
+      "Appointment booking flow designed for service-based businesses",
+      "Instant checkout with mobile money support",
+      "Card payment support for broader payment coverage",
+      "Unified dashboard for managing appointments and payments",
+      "Cleaner digital presence for solo operators and growing teams",
+      "Reduced back-and-forth scheduling through self-service booking",
+      "Early-access rollout through a private beta onboarding process",
     ],
   },
 ];
@@ -229,7 +148,7 @@ export default function ProductDetailPage() {
           </motion.div>
 
           {/* Product Image */}
-          <motion.div
+          {/* <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
@@ -248,7 +167,7 @@ export default function ProductDetailPage() {
                 />
               </div>
             </div>
-          </motion.div>
+          </motion.div> */}
         </div>
       </section>
 
