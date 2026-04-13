@@ -34,7 +34,7 @@ export default function EnterprisePage() {
       icon: Lightbulb,
       title: 'Future Digital Solutions',
       description:
-        'As we grow, LuDa Tech aims to deliver a range of intelligent products — spanning agriculture, finance, retail, and more — all powered by applied AI.',
+        'As we grow, Archomak aims to deliver a range of intelligent products — spanning agriculture, finance, retail, and more — all powered by applied AI.',
       benefits: [
         'Industry-focused innovation',
         'Early access to beta tools',
@@ -112,7 +112,7 @@ export default function EnterprisePage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto text-balance leading-relaxed"
           >
-            At LuDa, we’re developing a suite of intelligent tools that help organizations streamline processes, improve accuracy, and unlock new efficiencies—starting with real AI-powered products already in testing and rollout.
+            At Archomak, we’re developing a suite of intelligent tools that help organizations streamline processes, improve accuracy, and unlock new efficiencies—starting with real AI-powered products already in testing and rollout.
           </motion.p>
 
           <motion.div
@@ -265,7 +265,7 @@ export default function EnterprisePage() {
               Ready to Transform Your Enterprise?
             </h2>
             <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Let's discuss how LuDa can help you achieve your business objectives with innovative solutions tailored to your needs.
+              Let's discuss how Archomak can help you achieve your business objectives with innovative solutions tailored to your needs.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link

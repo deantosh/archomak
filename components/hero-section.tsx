@@ -42,7 +42,7 @@ export default function HeroSection() {
           transition={{ delay: 0.3 }}
           className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto text-balance leading-relaxed"
         >
-          At LuDa Tech, we design and develop versatile software solutions that solve real problems, unlock new opportunities, and create lasting impact across industries.
+          At Archomak, we design and develop versatile software solutions that solve real problems, unlock new opportunities, and create lasting impact across industries.
         </motion.p>
 
         {/* CTAs */}
