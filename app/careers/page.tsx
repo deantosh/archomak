@@ -217,7 +217,7 @@ export default function CareersPage() {
             transition={{ duration: 0.5 }}
             className="text-center mb-16"
           >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Why Join LuDa?</h2>
+            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Why Join Archomak?</h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
               We invest in our people and create an environment where great work happens.
             </p>
@@ -276,7 +276,7 @@ export default function CareersPage() {
               Our Culture
             </h2>
             <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-              At LuDa, we believe diverse perspectives lead to better solutions. We foster an environment where innovation thrives, ideas are valued, and everyone has the opportunity to grow. Our team members are the heart of our company, and we're committed to supporting their professional development and well-being.
+              At Archomak, we believe diverse perspectives lead to better solutions. We foster an environment where innovation thrives, ideas are valued, and everyone has the opportunity to grow. Our team members are the heart of our company, and we're committed to supporting their professional development and well-being.
             </p>
             <div className="inline-block p-6 rounded-xl bg-card border border-border">
               <p className="text-foreground font-medium mb-2">We offer competitive compensation, equity packages, and comprehensive benefits.</p>

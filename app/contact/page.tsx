@@ -56,9 +56,9 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: "Email",
-      value: "support@lu-da.tech",
+      value: "support@archomak.tech",
       description: "We'll get back to you within 24 hours",
-      href: "mailto:support@lu-da.tech",
+      href: "mailto:support@archomak.tech",
     },
     {
       icon: Phone,
