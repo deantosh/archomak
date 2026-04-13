@@ -4,7 +4,7 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
-  /* Updated color palette for LuDa Tech brand - deep blue, bright cyan, white */
+  /* Updated color palette for Archomak brand - deep blue, bright cyan, white */
   --background: oklch(1 0 0);
   --foreground: oklch(0.12 0 0);
   --card: oklch(0.98 0.01 260);
