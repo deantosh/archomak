@@ -6,7 +6,7 @@ import { Star } from 'lucide-react'
 export default function Testimonials() {
   const testimonials = [
     {
-      quote: 'LuDa Tech transformed our entire operation. Their team understood our needs and delivered beyond expectations.',
+      quote: 'Archomak transformed our entire operation. Their team understood our needs and delivered beyond expectations.',
       author: 'Sarah Chen',
       role: 'CEO, TechCorp',
       stars: 5,
@@ -18,7 +18,7 @@ export default function Testimonials() {
       stars: 5,
     },
     {
-      quote: 'Reliable, scalable, and a true partner. LuDa Tech is now integral to our business success.',
+      quote: 'Reliable, scalable, and a true partner. Archomak is now integral to our business success.',
       author: 'Emily Watson',
       role: 'Founder, StartupHub',
       stars: 5,
@@ -37,7 +37,7 @@ export default function Testimonials() {
         >
           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Trusted by Industry Leaders</h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            See what our clients have to say about partnering with LuDa Tech.
+            See what our clients have to say about partnering with Archomak.
           </p>
         </motion.div>
 
