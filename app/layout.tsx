@@ -29,6 +29,10 @@ export const metadata: Metadata = {
     "digital products",
     "workflow automation",
     "business software solutions",
+    "document intelligence",
+    "weather reporting software",
+    "booking and payment platform",
+    "Ghana service business software",
   ],
   authors: [{ name: "Archomak" }],
   creator: "Archomak",
@@ -69,6 +73,7 @@ export const metadata: Metadata = {
     description: defaultDescription,
     images: ["/logo/logo.png"],
   },
+  category: "technology",
   icons: {
     icon: "/logo/favico.png",
     shortcut: "/logo/favico.png",
@@ -90,6 +95,15 @@ export default function RootLayout({
     description: defaultDescription,
   };
 
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: "Archomak",
+    url: siteUrl,
+    description: defaultDescription,
+    inLanguage: "en-US",
+  };
+
   return (
     <html lang="en">
       <body className={`font-sans antialiased`}>
@@ -97,6 +111,12 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationJsonLd),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteJsonLd),
           }}
         />
         {children}
