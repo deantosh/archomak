@@ -50,7 +50,7 @@ export default function AboutPage() {
     {
       name: "Lucky Archibong",
       role: "Co-Founder",
-      bio: "Creating applications that simplify work and elevate everyday life.",
+      bio: "Creating Softwares that simplifies work and elevates everyday life.",
       image: "/team/luckySmooth.png",
       imagePosition: "object-top",
     },
@@ -59,15 +59,18 @@ export default function AboutPage() {
   const milestones = [
     {
       year: "2025",
-      event: "Archomak founded with vision to create AI-driven digital tools",
+      event:
+        "Archomak founded to build practical AI software for everyday operations",
     },
     {
       year: "2025",
-      event: "Launched LuDa Lens, our AI-powered form data extraction tool",
+      event:
+        "Released LuDa Lens for document capture and structured data extraction",
     },
     {
       year: "2026+",
-      event: "Expanding our product suite to solve diverse workflow challenges",
+      event:
+        "Expanded into vertical products including Kunanyesha and Book & Pay",
     },
   ];
 
@@ -89,7 +92,7 @@ export default function AboutPage() {
             className="inline-flex gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/30 mb-8"
           >
             <span className="w-2 h-2 bg-accent rounded-full mt-1" />
-            <span className="text-sm text-accent">Our Story</span>
+            <span className="text-sm text-accent">About Archomak</span>
           </motion.div>
 
           <motion.h1
@@ -98,9 +101,9 @@ export default function AboutPage() {
             transition={{ delay: 0.1 }}
             className="text-5xl sm:text-6xl lg:text-7xl font-bold text-foreground mb-6 leading-tight text-balance"
           >
-            Building AI-Powered Tools That{" "}
+            Build Useful Technology That{" "}
             <span className="bg-linear-to-r from-primary to-accent bg-clip-text text-transparent">
-              Transform Workflows
+              Organizes Work and Information
             </span>
           </motion.h1>
 
@@ -110,10 +113,10 @@ export default function AboutPage() {
             transition={{ delay: 0.2 }}
             className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto text-balance leading-relaxed"
           >
-            At Archomak, we design and develop intelligent solutions like{" "}
-            <strong>LuDa Lens</strong> to extract data, automate processes, and
-            unlock actionable insights. Our focus is creating versatile products
-            that make work smarter and more efficient.
+            Archomak creates practical tools that help teams surface what
+            matters, cut manual work, and act on better information across
+            document intelligence, weather reporting, and service-commerce
+            workflows.
           </motion.p>
         </div>
       </section>
@@ -133,9 +136,8 @@ export default function AboutPage() {
                 Our Mission
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                To build intelligent digital tools that solve real-world
-                challenges, empower businesses to work smarter, and unlock new
-                possibilities through practical and accessible innovation.
+                To organize complex workflows and information into simple,
+                actionable systems people can trust and use every day.
               </p>
             </motion.div>
 
@@ -150,9 +152,9 @@ export default function AboutPage() {
                 Our Vision
               </h2>
               <p className="text-lg text-muted-foreground leading-relaxed">
-                To shape a future where advanced technology enhances everyday
-                life, enabling people and organizations across the world to
-                achieve more with simplicity, clarity, and confidence.
+                To make advanced technology genuinely helpful at scale by
+                turning hard operational work into clear, fast, and confident
+                digital experiences.
               </p>
             </motion.div>
           </div>
@@ -220,7 +222,8 @@ export default function AboutPage() {
               Leadership Team
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Experienced leaders driving innovation and excellence at Archomak.
+              Builders and operators focused on solving real-world problems with
+              practical AI products.
             </p>
           </motion.div>
 
