@@ -104,6 +104,12 @@ export default function ProductDetailPage() {
   const productId = parseInt(params.id as string);
   const product = PRODUCTS.find((p) => p.id === productId);
 
+  const getStartedConfig = {
+    1: { href: "/contact", external: false },
+    7: { href: "https://kunanyesha.archomak.com", external: true },
+    8: { href: "https://www.bookandpaygh.com", external: true },
+  } as const;
+
   if (!product) {
     return (
       <main>
@@ -123,6 +129,11 @@ export default function ProductDetailPage() {
       </main>
     );
   }
+
+  const cta = getStartedConfig[product.id as keyof typeof getStartedConfig] || {
+    href: "/contact",
+    external: false,
+  };
 
   return (
     <main className="overflow-hidden">
@@ -222,7 +233,9 @@ export default function ProductDetailPage() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link
-                href="/contact"
+                href={cta.href}
+                target={cta.external ? "_blank" : undefined}
+                rel={cta.external ? "noopener noreferrer" : undefined}
                 className="px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium flex items-center justify-center gap-2 group"
               >
                 Get Started
