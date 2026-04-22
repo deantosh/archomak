@@ -1,16 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const _geist = Geist({ subsets: ["latin"] });
-const _geistMono = Geist_Mono({ subsets: ["latin"] });
+const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+  variable: "--font-geist-mono",
+});
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space-grotesk",
+  weight: ["400", "500", "600", "700"],
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
-const defaultTitle =
-  "Archomak | AI-Powered Digital Products and Enterprise Solutions";
+const defaultTitle = "Archomak | Digital Products for Africa and the World";
 const defaultDescription =
-  "Archomak builds AI-powered digital products and enterprise software solutions to automate workflows, extract data, and improve operational efficiency.";
+  "Archomak builds practical digital products for enterprises and operations teams across Africa and globally, using AI where it creates measurable value.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -20,19 +27,15 @@ export const metadata: Metadata = {
   },
   description: defaultDescription,
   applicationName: "Archomak",
-  generator: "v0.app",
   keywords: [
     "Archomak",
-    "AI software",
-    "enterprise automation",
-    "OCR data extraction",
     "digital products",
+    "enterprise software",
     "workflow automation",
-    "business software solutions",
     "document intelligence",
-    "weather reporting software",
-    "booking and payment platform",
-    "Ghana service business software",
+    "weather reporting",
+    "african technology company",
+    "product company",
   ],
   authors: [{ name: "Archomak" }],
   creator: "Archomak",
@@ -105,8 +108,11 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
-      <body className={`font-sans antialiased`}>
+    <html lang="en" className="dark">
+      <body
+        suppressHydrationWarning
+        className={`${geist.variable} ${geistMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+      >
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
