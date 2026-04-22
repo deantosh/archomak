@@ -1,138 +1,241 @@
 "use client";
 
-import { useState } from "react";
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Database, CloudRain, ShoppingBag } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { motion } from "framer-motion";
-import ProductCard from "@/components/product-card";
-import { Filter } from "lucide-react";
+import { fadeUp, scaleIn, stagger, viewportOnce } from "@/lib/motion";
+import { getProductDetailsHref, getProductWebsiteHref } from "@/lib/products";
 
-const PRODUCTS = [
+const products = [
   {
-    id: 1,
-    title: "LuDa Lens",
+    id: "1",
+    tag: "Data Capture",
+    status: "with held",
+    name: "LuDa Lens",
+    tagline: "Mobile document intelligence for field teams",
     description:
-      "Capture and transform handwritten or printed documents instantly with AI-powered OCR.",
-    longDescription:
-      "LuDa Lens lets you snap any handwritten or printed document and transform it into clean, structured digital data in seconds. From notes and invoices to receipts, forms, and contracts, the app intelligently reads and processes every detail using advanced AI-powered OCR.Simply capture a page, and LuDa Lens automatically extracts text, detects key fields, and organizes everything into ready-to-use formats like Excel, PDF, or structured text. You can even define custom fields—such as dates, names, totals, line items, or signatures—and LuDa Lens will accurately locate and extract them for you. Whether you're digitizing paperwork, streamlining business workflows, or converting messy documents into actionable data, LuDa Lens delivers fast, precise, and automated document processing that brings clarity to every page.",
-    category: "Data Capture",
-    tags: ["Web", "AI", "Automation"],
-    image: "/ludalens.png",
+      "Capture documents from your phone and turn invoices, IDs, forms, and receipts into structured data in seconds.",
     features: [
-      "AI-powered document automation",
-      "Smart OCR processing for handwritten and printed text",
-      "Custom field extraction",
-      "Export to Excel, PDF, and structured formats",
+      "OCR + ML extraction",
+      "Batch processing",
+      "API-first",
+      "Structured JSON output",
+      "Validation rules",
+      "Audit trail",
     ],
-    pricing: "Starting at $5/month",
+    price: "From $7/mo",
+    icon: Database,
+    detailsHref: getProductDetailsHref("1"),
+    websiteHref: getProductWebsiteHref("1", "products-card"),
   },
   {
-    id: 7,
-    title: "Kunanyesha",
+    id: "7",
+    tag: "Climate Tech",
+    status: "Live",
+    name: "Kunanyesha",
+    tagline: "Weather intelligence for African operations",
     description:
-      "Automated weekly county weather reporting with geospatial analysis and distribution workflows for Kenya's 47 counties.",
-    longDescription:
-      "Kunanyesha helps weather operations teams generate comprehensive weekly county reports faster by combining GRIB processing, real-time observations, geospatial visualization, and automated distribution in one workflow. Built for Kenyan reporting operations, it supports all 47 counties with county-level and ward-level analysis, on-demand reporting, monitoring, archives, and operational configuration from a centralized interface.",
-    category: "Climate Tech",
-    tags: ["Web", "Weather", "Geospatial", "Automation"],
-    image: "/kunanyesha.png",
+      "Real-time county-level weather data for all 47 counties in Kenya with automated weekly reports and geospatial analysis.",
     features: [
-      "Automated weekly and on-demand report generation",
-      "County-level and ward-level geospatial views",
-      "Monitoring, logs, and pipeline visibility",
-      "Archive access with operational configuration tools",
+      "47-county coverage",
+      "Automated reports",
+      "Geospatial maps",
+      "Custom alerts",
+      "Historical data",
+      "API access",
     ],
-    pricing: "Starting at KES 1,294/month",
+    price: "From KES 1,294/mo",
+    icon: CloudRain,
+    detailsHref: getProductDetailsHref("7"),
+    websiteHref: getProductWebsiteHref("7", "products-card"),
   },
   {
-    id: 8,
-    title: "Book & Pay",
+    id: "8",
+    tag: "Commerce",
+    status: "Beta",
+    name: "Book & Pay",
+    tagline: "Bookings and payments for African service businesses",
     description:
-      "Booking and payment software for Ghanaian service businesses, combining online scheduling with instant mobile money and card payments.",
-    longDescription:
-      "Book & Pay Ghana gives service businesses a professional online presence where customers can discover availability, book appointments, and pay instantly through mobile money or card. The platform is designed to reduce back-and-forth scheduling while giving operators one simple dashboard to manage bookings, payments, and customer flow from a single place.",
-    category: "Commerce",
-    tags: ["Web", "Bookings", "Payments", "Mobile Money"],
-    image: "/bookandpay.png",
+      "One platform for appointment scheduling, mobile money, and card payments — built for service businesses in Ghana.",
     features: [
-      "Shareable booking page for customers",
-      "Instant mobile money and card payments",
-      "Central dashboard for bookings and payments",
-      "Built for service businesses in Ghana",
+      "MTN Mobile Money",
+      "Card payments",
+      "Scheduling",
+      "SMS reminders",
+      "Analytics",
+      "Multi-staff",
     ],
-    pricing: "Private beta",
+    price: "From GHS 90/mo",
+    icon: ShoppingBag,
+    detailsHref: getProductDetailsHref("8"),
+    websiteHref: getProductWebsiteHref("8", "products-card"),
   },
 ];
 
 export default function ProductsPage() {
-  const [selectedCategory, setSelectedCategory] = useState("All");
-
-  const categories = ["All", ...new Set(PRODUCTS.map((p) => p.category))];
-  const filteredProducts =
-    selectedCategory === "All"
-      ? PRODUCTS
-      : PRODUCTS.filter((p) => p.category === selectedCategory);
-
   return (
-    <main className="overflow-hidden">
+    <div className="bg-[#080808] text-[#f2f2f2] min-h-screen">
       <Navigation />
 
-      <section className="pt-32 pb-16 px-4">
-        <div className="max-w-7xl mx-auto">
-          {/* Page Header */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-16"
-          >
-            <h1 className="text-5xl sm:text-6xl font-bold text-foreground mb-4 text-balance">
-              Our Product Suite
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Discover the complete range of Archomak solutions designed to
-              power your business.
-            </p>
+      {/* Header */}
+      <section className="relative pt-36 pb-16 border-b border-white/[0.06]">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(6,182,212,0.07) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p
+              variants={fadeUp}
+              className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-5"
+            >
+              Products
+            </motion.p>
+            <motion.h1
+              variants={fadeUp}
+              className="text-h1 max-w-2xl mb-5"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Three products.
+              <br />
+              <span className="gradient-text">Built for real operations.</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-body-lg max-w-md">
+              Each product solves a specific problem for businesses in Africa —
+              with AI where it makes the work better.
+            </motion.p>
           </motion.div>
+        </div>
+      </section>
 
-          {/* Filter Controls */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="flex flex-wrap gap-3 justify-center mb-16"
-          >
-            {categories.map((category) => (
-              <button
-                key={category}
-                onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${
-                  selectedCategory === category
-                    ? "bg-primary text-primary-foreground"
-                    : "bg-muted hover:bg-muted text-foreground border border-border"
-                }`}
-              >
-                {category}
-              </button>
-            ))}
-          </motion.div>
+      {/* Products list */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
+        <motion.div
+          className="flex flex-col gap-5"
+          variants={stagger}
+          initial="hidden"
+          whileInView="visible"
+          viewport={viewportOnce}
+        >
+          {products.map((product) => {
+            const Icon = product.icon;
+            const primaryHref = product.websiteHref ?? product.detailsHref;
+            return (
+              <motion.div key={product.id} variants={scaleIn}>
+                <div className="card-base group flex flex-col lg:flex-row gap-6 p-7 lg:p-8">
+                  {/* Left metadata */}
+                  <div className="flex-shrink-0 lg:w-52 flex flex-row lg:flex-col gap-4 lg:gap-3">
+                    <div className="w-10 h-10 rounded-xl bg-[#06b6d4]/10 flex items-center justify-center text-[#06b6d4] group-hover:bg-[#06b6d4]/20 transition-colors">
+                      <Icon size={18} />
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-1.5">
+                        <span className="tag-pill text-[10px]">
+                          {product.tag}
+                        </span>
+                        <span
+                          className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
+                            product.status === "Live"
+                              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                              : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
+                          }`}
+                        >
+                          {product.status}
+                        </span>
+                      </div>
+                      <h3
+                        className="text-lg font-semibold text-white"
+                        style={{ fontFamily: "var(--font-display)" }}
+                      >
+                        {product.name}
+                      </h3>
+                      <p className="text-xs text-[#555] mt-0.5">
+                        {product.tagline}
+                      </p>
+                    </div>
+                  </div>
 
-          {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product, index) => (
-              <motion.div
-                key={product.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.05 }}
-              >
-                <ProductCard product={product} />
+                  {/* Middle */}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm text-[#666] leading-relaxed mb-5">
+                      {product.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {product.features.map((f) => (
+                        <span
+                          key={f}
+                          className="text-xs px-3 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-[#555]"
+                        >
+                          {f}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Right */}
+                  <div className="flex-shrink-0 flex flex-col items-start lg:items-end justify-between gap-4 lg:min-w-[140px]">
+                    <p className="text-sm font-semibold text-white">
+                      {product.price}
+                    </p>
+                    <div className="flex items-center gap-4">
+                      <Link
+                        href={product.detailsHref}
+                        className="text-sm text-[#666] hover:text-white transition-colors"
+                      >
+                        Details
+                      </Link>
+                      <Link
+                        href={primaryHref}
+                        target={product.websiteHref ? "_self" : undefined}
+                        rel={
+                          product.websiteHref
+                            ? "noopener noreferrer"
+                            : undefined
+                        }
+                        className="text-sm font-medium text-[#06b6d4] flex items-center gap-1.5 group-hover:gap-2.5 transition-all"
+                      >
+                        {product.websiteHref ? "View product" : "Get started"}{" "}
+                        <ArrowRight size={14} />
+                      </Link>
+                    </div>
+                  </div>
+                </div>
               </motion.div>
-            ))}
+            );
+          })}
+        </motion.div>
+      </section>
+
+      {/* Enterprise CTA */}
+      <section className="border-t border-white/[0.06] bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+          <div>
+            <h3
+              className="text-xl font-bold text-white mb-2"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Need a custom solution?
+            </h3>
+            <p className="text-sm text-[#666]">
+              Our enterprise team builds tailored deployments for large
+              organisations.
+            </p>
           </div>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors flex-shrink-0"
+          >
+            Talk to enterprise <ArrowRight size={14} />
+          </Link>
         </div>
       </section>
 
       <Footer />
-    </main>
+    </div>
   );
 }

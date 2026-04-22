@@ -1,261 +1,462 @@
-"use client";
-
-import { useParams } from "next/navigation";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { ArrowLeft, ArrowRight, Check } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { motion } from "framer-motion";
-import { CheckCircle2, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import Image from "next/image";
+import { getProductWebsiteHref } from "@/lib/products";
 
-const PRODUCTS = [
-  {
-    id: 1,
-    title: "LuDa Lens",
-    description:
-      "Capture and transform handwritten or printed documents instantly with AI-powered OCR.",
-    longDescription:
-      "LuDa Lens lets you snap any handwritten or printed document and transform it into clean, structured digital data in seconds. From notes and invoices to receipts, forms, and contracts, the app intelligently reads and processes every detail using advanced AI-powered OCR.Simply capture a page, and LuDa Lens automatically extracts text, detects key fields, and organizes everything into ready-to-use formats like Excel, PDF, or structured text.",
-    category: "Data Capture",
-    tags: ["Web", "AI", "Automation"],
-    // image: "/ludalens.png",
-    features: [
-      "AI-powered automation",
-      "Multi-platform integration",
-      "Real-time analytics",
-      "Custom workflows",
-    ],
-    pricing: "Starting at $5/month",
-    fullFeatures: [
-      "AI-powered OCR optimized for mobile camera capture",
-      "Instant text extraction from handwritten and printed documents",
-      "Smart field detection with customizable fields you define",
-      "Automatic formatting into Excel, PDF, and clean text outputs",
-      "Table, layout, and pattern recognition built for mobile scans",
-      "On-device preprocessing for sharper, cleaner document captures",
-      "Batch scanning and quick multi-page processing",
-      "Offline mode for capturing and preparing documents without internet",
-      "Secure cloud sync for storing and retrieving processed documents",
-      "Developer API for integrating mobile document capture into other apps",
-    ],
-  },
-  {
-    id: 7,
-    title: "Kunanyesha",
-    description:
-      "Automated weekly county weather reporting with geospatial analysis and distribution workflows for Kenya's 47 counties.",
-    longDescription:
-      "Kunanyesha streamlines weekly county weather reporting by combining GRIB processing, integrated observations, geospatial visualization, automation, and distribution into one operational platform. Teams can generate comprehensive reports with a single click, manage county and ward-level data views, monitor pipelines in real time, configure schedules and delivery settings, and review archived outputs from a centralized dashboard built for Kenyan weather reporting operations.",
-    category: "Climate Tech",
-    tags: ["Web", "Weather", "Geospatial", "Automation"],
-    // image: "/kunanyesha.png",
-    features: [
-      "Automated weekly and on-demand report generation",
-      "County-level and ward-level geospatial views",
-      "Monitoring, logs, and pipeline visibility",
-      "Archive access with operational configuration tools",
-    ],
-    pricing: "Starting at KES 1,294/month",
-    fullFeatures: [
-      "Single-click generation of comprehensive weekly county weather reports",
-      "GRIB data processing with integrated real-time observations",
-      "Interactive county-level and ward-level geospatial visualizations",
-      "System health monitoring, pipeline status tracking, and anomaly alerts",
-      "Manual report generation with flexible scheduling controls",
-      "Historical archive access with filtering for previous reports",
-      "Configuration tools for GRIB storage, scheduling, and email distribution",
-      "Data management for shapefiles, observations, and validation workflows",
-      "Detailed operational logs and diagnostics for troubleshooting",
-      "Coverage designed for all 47 Kenyan counties",
-    ],
-  },
-  {
-    id: 8,
-    title: "Book & Pay",
-    description:
-      "Booking and payment software for Ghanaian service businesses, combining online scheduling with instant mobile money and card payments.",
-    longDescription:
-      "Book & Pay Ghana gives service businesses a professional online presence where customers can book appointments and pay instantly through mobile money or card. The product reduces manual coordination by letting businesses share a single booking link while handling scheduling and payments from one simple dashboard tailored to local service workflows.",
-    category: "Commerce",
-    tags: ["Web", "Bookings", "Payments", "Mobile Money"],
-    // image: "/bookandpay.png",
-    features: [
-      "Shareable booking page for customers",
-      "Instant mobile money and card payments",
-      "Central dashboard for bookings and payments",
-      "Built for service businesses in Ghana",
-    ],
-    pricing: "Private beta",
-    fullFeatures: [
-      "Public booking page businesses can share with customers",
-      "Appointment booking flow designed for service-based businesses",
-      "Instant checkout with mobile money support",
-      "Card payment support for broader payment coverage",
-      "Unified dashboard for managing appointments and payments",
-      "Cleaner digital presence for solo operators and growing teams",
-      "Reduced back-and-forth scheduling through self-service booking",
-      "Early-access rollout through a private beta onboarding process",
-    ],
-  },
-];
-
-export default function ProductDetailPage() {
-  const params = useParams();
-  const productId = parseInt(params.id as string);
-  const product = PRODUCTS.find((p) => p.id === productId);
-
-  const getStartedConfig = {
-    1: { href: "/contact", external: false },
-    7: { href: "https://kunanyesha.archomak.com", external: true },
-    8: { href: "https://www.bookandpaygh.com", external: true },
-  } as const;
-
-  if (!product) {
-    return (
-      <main>
-        <Navigation />
-        <div className="pt-32 pb-16 px-4 text-center">
-          <h1 className="text-3xl font-bold text-foreground">
-            Product not found
-          </h1>
-          <Link
-            href="/products"
-            className="mt-4 inline-block text-primary hover:text-accent"
-          >
-            Back to products
-          </Link>
-        </div>
-        <Footer />
-      </main>
-    );
-  }
-
-  const cta = getStartedConfig[product.id as keyof typeof getStartedConfig] || {
-    href: "/contact",
-    external: false,
+type ProductData = {
+  id: string;
+  tag: string;
+  status: string;
+  name: string;
+  tagline: string;
+  longDescription: string;
+  features: { title: string; description: string }[];
+  pricing: {
+    label: string;
+    price: string;
+    period: string;
+    description: string;
+    highlighted: boolean;
+    items: string[];
+  }[];
+  cta: {
+    primary: string;
+    primaryHref: string;
+    secondary: string;
+    secondaryHref: string;
   };
+};
+
+const productData: Record<string, ProductData> = {
+  "1": {
+    id: "1",
+    tag: "Data Capture",
+    status: "with held",
+    name: "LuDa Lens",
+    tagline: "Mobile document intelligence for field teams",
+    longDescription:
+      "LuDa Lens is a mobile app that helps teams capture documents in the field and turn them into clean, structured data instantly. From invoices and forms to IDs and receipts, it combines mobile-first capture, OCR, and machine learning to automate data collection wherever the work happens.",
+    features: [
+      {
+        title: "Mobile-first capture",
+        description:
+          "Capture documents directly from your phone camera with workflows tuned for real-world field conditions and imperfect lighting.",
+      },
+      {
+        title: "Structured output",
+        description:
+          "Data is returned as clean JSON or CSV, ready to ingest into any database, ERP, or workflow tool.",
+      },
+      {
+        title: "Batch processing",
+        description:
+          "Upload and process thousands of documents in parallel. Built for high-volume enterprise pipelines.",
+      },
+      {
+        title: "API-first",
+        description:
+          "RESTful API with webhooks, SDKs, and no-code integrations for Zapier and Make.",
+      },
+      {
+        title: "Validation rules",
+        description:
+          "Define custom rules to flag anomalies, missing fields, or format mismatches before data is committed.",
+      },
+      {
+        title: "Audit trail",
+        description:
+          "Every extraction is logged with timestamps, confidence scores, and source references for compliance.",
+      },
+    ],
+    pricing: [
+      {
+        label: "Starter",
+        price: "$7",
+        period: "/ month",
+        description:
+          "For individuals and small teams testing document automation.",
+        highlighted: false,
+        items: [
+          "500 pages/month",
+          "API access",
+          "JSON output",
+          "Email support",
+        ],
+      },
+      {
+        label: "Growth",
+        price: "$23",
+        period: "/ month",
+        description: "For growing teams with consistent document workflows.",
+        highlighted: true,
+        items: [
+          "5,000 pages/month",
+          "Batch processing",
+          "Webhooks",
+          "Custom fields",
+          "Priority support",
+        ],
+      },
+      {
+        label: "Enterprise",
+        price: "Custom",
+        period: "",
+        description: "Dedicated capacity and SLA for large organisations.",
+        highlighted: false,
+        items: [
+          "Unlimited pages",
+          "On-premise option",
+          "SLA guarantee",
+          "Dedicated success manager",
+          "Custom integrations",
+        ],
+      },
+    ],
+    cta: {
+      primary: "Get started",
+      primaryHref: "/contact",
+      secondary: "View Enterprise",
+      secondaryHref: "/enterprise",
+    },
+  },
+  "7": {
+    id: "7",
+    tag: "Climate Tech",
+    status: "Live",
+    name: "Kunanyesha",
+    tagline: "Weather intelligence for African operations",
+    longDescription:
+      "Kunanyesha delivers hyperlocal weather intelligence for all 47 counties in Kenya. Automated weekly reports with geospatial analysis help agricultural teams, logistics operators, and government agencies make weather-informed decisions.",
+    features: [
+      {
+        title: "47-county coverage",
+        description:
+          "Real-time and forecast data at the county level, granular enough for field operations and planning.",
+      },
+      {
+        title: "Automated weekly reports",
+        description:
+          "Scheduled PDF and email reports delivered to your inbox every Monday morning. No manual work required.",
+      },
+      {
+        title: "Geospatial analysis",
+        description:
+          "Interactive maps overlaying weather data with your operational zones, routes, and crop areas.",
+      },
+      {
+        title: "Custom alerts",
+        description:
+          "Set threshold-based SMS or email alerts for rainfall, temperature, humidity, or wind events.",
+      },
+      {
+        title: "Historical data",
+        description:
+          "Access up to 10 years of historical weather records for trend analysis and planning.",
+      },
+      {
+        title: "API access",
+        description:
+          "Integrate county-level weather data into your own dashboards, apps, or ERP systems.",
+      },
+    ],
+    pricing: [
+      {
+        label: "County",
+        price: "KES 1,294",
+        period: "/ month",
+        description:
+          "Single county access for field teams and individual operators.",
+        highlighted: false,
+        items: ["1 county", "Weekly reports", "Custom alerts", "API access"],
+      },
+      {
+        label: "Regional",
+        price: "KES 4,999",
+        period: "/ month",
+        description:
+          "Coverage across a cluster of counties for regional operations.",
+        highlighted: true,
+        items: [
+          "Up to 8 counties",
+          "Weekly + ad-hoc reports",
+          "Geospatial maps",
+          "Priority alerts",
+          "Priority support",
+        ],
+      },
+      {
+        label: "National",
+        price: "Custom",
+        period: "",
+        description:
+          "Full 47-county coverage for government agencies and national enterprises.",
+        highlighted: false,
+        items: [
+          "All 47 counties",
+          "Custom report cadence",
+          "Full geospatial suite",
+          "API + webhooks",
+          "Dedicated support",
+        ],
+      },
+    ],
+    cta: {
+      primary: "Start free trial",
+      primaryHref: "/contact",
+      secondary: "Enterprise options",
+      secondaryHref: "/enterprise",
+    },
+  },
+  "8": {
+    id: "8",
+    tag: "Commerce",
+    status: "Beta",
+    name: "Book & Pay",
+    tagline: "Bookings and payments for African service businesses",
+    longDescription:
+      "Book & Pay gives service businesses in Ghana a single platform to manage appointments, accept mobile money and card payments, and automate customer reminders — without needing a developer or multiple subscriptions.",
+    features: [
+      {
+        title: "Mobile money support",
+        description:
+          "Accept MTN Mobile Money and Vodafone Cash natively. No third-party redirects or extra setup.",
+      },
+      {
+        title: "Card payments",
+        description:
+          "Visa and Mastercard processing via Paystack, fully PCI-DSS compliant.",
+      },
+      {
+        title: "Appointment scheduling",
+        description:
+          "Customers book online via your shareable link. You set your availability, buffer times, and capacity.",
+      },
+      {
+        title: "Automated reminders",
+        description:
+          "SMS and WhatsApp reminders reduce no-shows by up to 40% — sent automatically 24h and 1h before.",
+      },
+      {
+        title: "Business dashboard",
+        description:
+          "Real-time view of bookings, revenue, and customer history. Export reports in one click.",
+      },
+      {
+        title: "Multi-staff support",
+        description:
+          "Manage multiple staff members, each with their own schedule and service offerings.",
+      },
+    ],
+    pricing: [
+      {
+        label: "Starter",
+        price: "GHS 90",
+        period: "/ month",
+        description: "Perfect for solo operators and small service providers.",
+        highlighted: false,
+        items: [
+          "1 staff member",
+          "Unlimited bookings",
+          "Mobile money",
+          "SMS reminders",
+        ],
+      },
+      {
+        label: "Business",
+        price: "GHS 150",
+        period: "/ month",
+        description:
+          "For growing businesses with a team and multiple services.",
+        highlighted: true,
+        items: [
+          "Up to 5 staff",
+          "Card + mobile money",
+          "WhatsApp reminders",
+          "Analytics dashboard",
+          "Priority support",
+        ],
+      },
+      {
+        label: "Enterprise",
+        price: "Custom",
+        period: "",
+        description: "For chains, franchises, and multi-location businesses.",
+        highlighted: false,
+        items: [
+          "Unlimited staff",
+          "Multi-location",
+          "Custom integrations",
+          "API access",
+          "Dedicated support",
+        ],
+      },
+    ],
+    cta: {
+      primary: "Join beta waitlist",
+      primaryHref: "/contact",
+      secondary: "Learn more",
+      secondaryHref: "/enterprise",
+    },
+  },
+};
+
+export async function generateStaticParams() {
+  return Object.keys(productData).map((id) => ({ id }));
+}
+
+export default async function ProductDetailPage({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  const { id } = await params;
+  const product = productData[id];
+  if (!product) notFound();
+
+  const websiteHref = getProductWebsiteHref(product.id, "product-detail");
+  const primaryHref = websiteHref ?? product.cta.primaryHref;
+  const primaryLabel = websiteHref ? "View product" : product.cta.primary;
+  const pricingCtaLabel = websiteHref ? "View product" : "Get started";
 
   return (
-    <main className="overflow-hidden">
+    <div className="bg-[#080808] text-[#f2f2f2] min-h-screen">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="pt-32 pb-16 px-4 bg-linear-to-b from-primary/10 to-background">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="text-center mb-12"
+      <section className="relative pt-36 pb-20 border-b border-white/[0.06]">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(6,182,212,0.06) 0%, transparent 70%)",
+          }}
+        />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <Link
+            href="/products"
+            className="inline-flex items-center gap-2 text-xs text-[#555] hover:text-white transition-colors mb-8"
           >
-            <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-accent/10 text-accent mb-4">
-              {product.category}
+            <ArrowLeft size={12} /> All products
+          </Link>
+          <div className="flex items-center gap-3 mb-6">
+            <span className="tag-pill">{product.tag}</span>
+            <span
+              className={`text-xs font-medium px-2 py-0.5 rounded-full ${product.status === "Live" ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-amber-500/10 text-amber-400 border border-amber-500/20"}`}
+            >
+              {product.status}
             </span>
-            <h1 className="text-5xl sm:text-6xl font-bold text-foreground mb-6 text-balance">
-              {product.title}
-            </h1>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
-              {product.longDescription}
-            </p>
-          </motion.div>
-
-          {/* Product Image */}
-          {/* <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="rounded-2xl overflow-hidden bg-muted border border-border p-6"
+          </div>
+          <h1
+            className="text-h1 max-w-2xl mb-4"
+            style={{ fontFamily: "var(--font-display)" }}
           >
-            <div className="relative w-full bg-background rounded-xl flex items-center justify-center">
-              <div className="relative w-full max-w-3xl">
-                <Image
-                  src={product.image || "/placeholder.svg"}
-                  alt={product.title}
-                  width={1600} // Ensures high-resolution
-                  height={1200}
-                  quality={100} // Prevent compression blur
-                  className="w-full h-auto object-contain mx-auto"
-                  priority
-                />
-              </div>
-            </div>
-          </motion.div> */}
+            {product.name}
+          </h1>
+          <p className="text-body-lg max-w-lg">{product.longDescription}</p>
+          <div className="flex flex-wrap items-center gap-4 mt-10">
+            <Link
+              href={primaryHref}
+              target={websiteHref ? "_self" : undefined}
+              rel={websiteHref ? "noopener noreferrer" : undefined}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {primaryLabel} <ArrowRight size={16} />
+            </Link>
+            <Link
+              href={product.cta.secondaryHref}
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
+            >
+              {product.cta.secondary}
+            </Link>
+          </div>
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="mb-16"
-          >
-            <h2 className="text-4xl font-bold text-foreground mb-4">
-              Key Features
-            </h2>
-            <div className="w-12 h-1 bg-linear-to-r from-primary to-accent rounded-full" />
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {product.fullFeatures.map((feature, index) => (
-              <motion.div
-                key={feature}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="flex gap-4"
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-10">
+          Features
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {product.features.map((feature) => (
+            <div key={feature.title} className="card-base p-6">
+              <h3
+                className="text-[15px] font-semibold text-white mb-2"
+                style={{ fontFamily: "var(--font-display)" }}
               >
-                <div className="shrink-0">
-                  <CheckCircle2 size={24} className="text-accent mt-0.5" />
+                {feature.title}
+              </h3>
+              <p className="text-sm text-[#666] leading-relaxed">
+                {feature.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section className="border-t border-white/[0.06] bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-4">
+            Pricing
+          </p>
+          <h2 className="text-h2 mb-12">Simple, transparent plans.</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
+            {product.pricing.map((tier) => (
+              <div
+                key={tier.label}
+                className={`relative flex flex-col rounded-xl p-7 border transition-all ${tier.highlighted ? "bg-[#111] border-[#06b6d4]/40 shadow-[0_0_40px_rgba(6,182,212,0.1)]" : "bg-[#111] border-white/[0.08]"}`}
+              >
+                {tier.highlighted && (
+                  <div className="absolute -top-3 left-6">
+                    <span className="px-3 py-1 text-xs font-semibold bg-[#06b6d4] text-[#080808] rounded-full">
+                      Most popular
+                    </span>
+                  </div>
+                )}
+                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#555] mb-4">
+                  {tier.label}
+                </p>
+                <div className="mb-3">
+                  <span
+                    className="text-3xl font-bold text-white"
+                    style={{ fontFamily: "var(--font-display)" }}
+                  >
+                    {tier.price}
+                  </span>
+                  {tier.period && (
+                    <span className="text-sm text-[#555] ml-1">
+                      {tier.period}
+                    </span>
+                  )}
                 </div>
-                <div>
-                  <p className="text-lg text-foreground font-medium">
-                    {feature}
-                  </p>
-                </div>
-              </motion.div>
+                <p className="text-sm text-[#666] mb-6">{tier.description}</p>
+                <ul className="flex flex-col gap-2.5 flex-1">
+                  {tier.items.map((item) => (
+                    <li key={item} className="flex items-start gap-2.5">
+                      <Check
+                        size={14}
+                        className="text-[#06b6d4] mt-0.5 flex-shrink-0"
+                      />
+                      <span className="text-sm text-[#888]">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                <Link
+                  href={primaryHref}
+                  target={websiteHref ? "_self" : undefined}
+                  rel={websiteHref ? "noopener noreferrer" : undefined}
+                  className={`mt-8 flex items-center justify-center gap-2 py-2.5 rounded-lg text-sm font-medium transition-colors ${tier.highlighted ? "bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee]" : "border border-white/[0.1] text-[#888] hover:text-white hover:border-white/25"}`}
+                >
+                  {pricingCtaLabel}
+                </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Pricing & CTA */}
-      <section className="py-24 px-4 bg-linear-to-b from-background via-primary/5 to-background">
-        <div className="max-w-2xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <p className="text-2xl font-bold text-foreground mb-6">
-              {product.pricing}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href={cta.href}
-                target={cta.external ? "_blank" : undefined}
-                rel={cta.external ? "noopener noreferrer" : undefined}
-                className="px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium flex items-center justify-center gap-2 group"
-              >
-                Get Started
-                <ArrowRight
-                  size={18}
-                  className="group-hover:translate-x-1 transition-transform"
-                />
-              </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-3 rounded-lg border border-border bg-background hover:bg-muted text-foreground transition-colors font-medium"
-              >
-                Schedule Demo
-              </Link>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       <Footer />
-    </main>
+    </div>
   );
 }
