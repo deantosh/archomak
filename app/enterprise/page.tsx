@@ -1,292 +1,146 @@
-'use client'
+"use client";
 
-import Navigation from '@/components/navigation'
-import Footer from '@/components/footer'
-import { motion } from 'framer-motion'
-import { ArrowRight, CheckCircle2, Zap, Shield, Lightbulb } from 'lucide-react'
-import Link from 'next/link'
+import Link from "next/link";
+import { motion } from "framer-motion";
+import { ArrowRight, Truck, Landmark, HeartPulse, ShoppingCart, GitMerge, Settings, BarChart3, Lock } from "lucide-react";
+import Navigation from "@/components/navigation";
+import Footer from "@/components/footer";
+import { fadeUp, slideLeft, slideRight, scaleIn, stagger, viewportOnce } from "@/lib/motion";
+import ContactForm from "./contact-form";
+
+const industries = [
+  { icon: Truck, name: "Logistics & Supply Chain", description: "Automate document processing, digitise manifests, and integrate weather data into route planning." },
+  { icon: Landmark, name: "Finance & Banking", description: "Accelerate KYC, automate form extraction, and reduce manual processing of financial documents." },
+  { icon: HeartPulse, name: "Healthcare", description: "Digitise patient records, automate intake forms, and extract structured data from lab reports." },
+  { icon: ShoppingCart, name: "Retail & Commerce", description: "Streamline supplier invoices, automate inventory documents, and integrate payments at scale." },
+];
+
+const capabilities = [
+  { icon: GitMerge, title: "Custom integrations", description: "We connect our products to your existing ERP, CRM, or workflow systems via API or dedicated connectors." },
+  { icon: Settings, title: "Tailored deployments", description: "On-premise, hybrid, or fully managed cloud deployments with configuration specific to your environment." },
+  { icon: BarChart3, title: "Analytics & reporting", description: "Custom dashboards and automated reports built around your KPIs and operational metrics." },
+  { icon: Lock, title: "Enterprise security", description: "Role-based access, audit logging, encryption at rest and in transit, and compliance documentation." },
+];
+
+const steps = [
+  { step: "01", title: "Discovery call", description: "We map your operational pain points and identify where our products create value in your workflows." },
+  { step: "02", title: "Solution design", description: "We propose a tailored integration plan — products, architecture, timeline, and pricing." },
+  { step: "03", title: "Pilot deployment", description: "We deploy a scoped pilot so your team can validate results before a full rollout." },
+  { step: "04", title: "Full rollout & support", description: "We handle onboarding, training, and provide dedicated support through your go-live and beyond." },
+];
 
 export default function EnterprisePage() {
-  const solutions = [
-    {
-      icon: Zap,
-      title: 'AI-Powered Data Extraction',
-      description:
-        'LuDa Lens automates the extraction of data from scanned or photographed forms, eliminating manual entry and reducing errors for enterprise teams.',
-      benefits: [
-        'High-accuracy OCR + AI parsing',
-        'PDF/Excel export',
-        'Integration with existing company databases',
-      ],
-    },
-    {
-      icon: Shield,
-      title: 'Workflow Automation (Expanding Soon)',
-      description:
-        'We are building tools that simplify repetitive processes, enhance efficiency, and support smarter decision-making for modern businesses.',
-      benefits: [
-        'Custom workflow design',
-        'End-to-end automation',
-        'Seamless integration capabilities',
-      ],
-    },
-    {
-      icon: Lightbulb,
-      title: 'Future Digital Solutions',
-      description:
-        'As we grow, Archomak aims to deliver a range of intelligent products — spanning agriculture, finance, retail, and more — all powered by applied AI.',
-      benefits: [
-        'Industry-focused innovation',
-        'Early access to beta tools',
-        'Designed for scalability',
-      ],
-    },
-  ]
-
-  const industries = [
-    { name: 'Logistics', icon: '💼' },
-    { name: 'Healthcare', icon: '🏥' },
-    { name: 'Retail', icon: '🛍️' },
-    { name: 'Finance', icon: '🏭' },
-    { name: 'Energy', icon: '⚡' },
-    { name: 'Government', icon: '🏛️' },
-  ]
-
-  const process = [
-    {
-      step: '01',
-      title: 'Understanding Your Needs',
-      description: 'We analyze your workflows, pain points, and data processes to uncover opportunities where automation or AI can deliver measurable value.',
-    },
-    {
-      step: '02',
-      title: 'Solution Design',
-      description: 'We craft a tailored plan — optimizing LuDa Lens for your use case or outlining new tools that align with your operational goals.',
-    },
-    {
-      step: '03',
-      title: 'Deployment & Integration',
-      description: 'We deploy the solution, integrate it into your existing systems, and ensure your team is fully supported during the transition.',
-    },
-    {
-      step: '04',
-      title: 'Continuous Support',
-      description: 'We provide ongoing enhancements, maintenance, and optional feature expansions as your business evolves.',
-    },
-  ]
-
   return (
-    <main className="overflow-hidden">
+    <div className="bg-[#080808] text-[#f2f2f2] min-h-screen">
       <Navigation />
 
-      {/* Hero Section */}
-      <section className="min-h-screen flex items-center justify-center pt-20 px-4 relative overflow-hidden">
-        {/* Background */}
-        <div className="absolute inset-0 -z-10">
-          <div className="absolute top-0 left-1/3 w-96 h-96 bg-primary/20 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-0 right-1/3 w-96 h-96 bg-accent/20 rounded-full blur-3xl animate-pulse" />
-        </div>
-
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="inline-flex gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/30 mb-8"
-          >
-            <span className="w-2 h-2 bg-primary rounded-full mt-1" />
-            <span className="text-sm text-primary font-medium">Enterprise Solutions</span>
-          </motion.div>
-
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight text-balance"
-          >
-            Engineering Scalable Tools for <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Modern Enterprises</span>
-          </motion.h1>
-
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto text-balance leading-relaxed"
-          >
-            At Archomak, we’re developing a suite of intelligent tools that help organizations streamline processes, improve accuracy, and unlock new efficiencies—starting with real AI-powered products already in testing and rollout.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-          >
-            <Link
-              href="#contact"
-              className="inline-flex px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium gap-2 group"
-            >
-              Book a Consultation
-              <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+      <section className="relative pt-36 pb-24 border-b border-white/[0.06]">
+        <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse 70% 50% at 50% 0%, rgba(6,182,212,0.07) 0%, transparent 70%)" }} />
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <motion.div variants={stagger} initial="hidden" animate="visible">
+            <motion.p variants={fadeUp} className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-5">Enterprise</motion.p>
+            <motion.h1 variants={fadeUp} className="text-h1 max-w-3xl mb-5">
+              Enterprise-grade software for{" "}
+              <span className="gradient-text">real-world operations.</span>
+            </motion.h1>
+            <motion.p variants={fadeUp} className="text-body-lg max-w-xl mb-10">
+              We work directly with enterprise teams to deploy, integrate, and customise our products for your specific operational environment — at any scale.
+            </motion.p>
+            <motion.div variants={fadeUp} className="flex flex-wrap items-center gap-4">
+              <a href="#contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors" style={{ fontFamily: "var(--font-display)" }}>
+                Book a consultation <ArrowRight size={16} />
+              </a>
+              <Link href="/products" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors">
+                View products
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Solutions Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-background via-primary/5 to-background">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Our Enterprise Solutions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive offerings to address your most complex business challenges.
-            </p>
-          </motion.div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {solutions.map((solution, index) => {
-              const Icon = solution.icon
-              return (
-                <motion.div
-                  key={solution.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all"
-                >
-                  <div className="w-14 h-14 rounded-lg bg-gradient-to-br from-primary to-accent flex items-center justify-center mb-6">
-                    <Icon size={28} className="text-primary-foreground" />
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+        <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          <motion.p variants={fadeUp} className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-4">Industries we serve</motion.p>
+          <motion.h2 variants={fadeUp} className="text-h2 mb-14 max-w-xl">Built for teams that operate at scale.</motion.h2>
+        </motion.div>
+        <motion.div className="grid grid-cols-1 md:grid-cols-2 gap-5" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+          {industries.map((industry) => {
+            const Icon = industry.icon;
+            return (
+              <motion.div key={industry.name} variants={scaleIn} className="card-base p-7">
+                <div className="flex items-start gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-[#06b6d4]/10 flex items-center justify-center text-[#06b6d4] flex-shrink-0"><Icon size={18} /></div>
+                  <div>
+                    <h3 className="text-[15px] font-semibold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>{industry.name}</h3>
+                    <p className="text-sm text-[#666] leading-relaxed">{industry.description}</p>
                   </div>
-                  <h3 className="text-2xl font-bold text-foreground mb-3">{solution.title}</h3>
-                  <p className="text-muted-foreground mb-6">{solution.description}</p>
-                  <ul className="space-y-2">
-                    {solution.benefits.map((benefit) => (
-                      <li key={benefit} className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <CheckCircle2 size={16} className="text-accent flex-shrink-0" />
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-                </motion.div>
-              )
-            })}
-          </div>
-        </div>
+                </div>
+              </motion.div>
+            );
+          })}
+        </motion.div>
       </section>
 
-      {/* Industries Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Industries We Serve</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Proven expertise across key sectors with deep industry knowledge.
-            </p>
+      <section className="border-t border-white/[0.06] bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+          <motion.div variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+            <motion.p variants={fadeUp} className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-4">How we work</motion.p>
+            <motion.h2 variants={fadeUp} className="text-h2 mb-14 max-w-xl">From first call to full deployment.</motion.h2>
           </motion.div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-            {industries.map((industry, index) => (
-              <motion.div
-                key={industry.name}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: index * 0.05 }}
-                className="p-6 rounded-xl bg-card border border-border hover:border-accent/50 transition-all text-center group cursor-pointer"
-              >
-                <div className="text-4xl mb-3 group-hover:scale-110 transition-transform">{industry.icon}</div>
-                <p className="font-medium text-foreground">{industry.name}</p>
+          <motion.div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+            {steps.map((step, i) => (
+              <motion.div key={step.step} variants={fadeUp} transition={{ delay: i * 0.08 }}>
+                <div className="card-base p-6 h-full">
+                  <p className="text-4xl font-bold text-white/[0.06] mb-4 leading-none" style={{ fontFamily: "var(--font-display)" }}>{step.step}</p>
+                  <h3 className="text-[15px] font-semibold text-white mb-2" style={{ fontFamily: "var(--font-display)" }}>{step.title}</h3>
+                  <p className="text-sm text-[#666] leading-relaxed">{step.description}</p>
+                </div>
               </motion.div>
             ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="border-t border-white/[0.06]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            <motion.div variants={slideLeft} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-5">What we deliver</p>
+              <h2 className="text-h2 mb-5">More than software. <span className="gradient-text">A delivery partner.</span></h2>
+              <p className="text-sm text-[#666] leading-relaxed max-w-md">We don&apos;t just hand you a product and leave. We work alongside your team to ensure the deployment succeeds, the integration is solid, and the outcomes are real.</p>
+            </motion.div>
+            <motion.div className="grid grid-cols-1 sm:grid-cols-2 gap-5" variants={stagger} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+              {capabilities.map((cap) => {
+                const Icon = cap.icon;
+                return (
+                  <motion.div key={cap.title} variants={slideRight} className="card-base p-5">
+                    <div className="w-8 h-8 rounded-md bg-[#06b6d4]/10 flex items-center justify-center text-[#06b6d4] mb-3"><Icon size={15} /></div>
+                    <h4 className="text-[14px] font-semibold text-white mb-1.5" style={{ fontFamily: "var(--font-display)" }}>{cap.title}</h4>
+                    <p className="text-xs text-[#666] leading-relaxed">{cap.description}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Process Section */}
-      <section className="py-24 px-4 bg-gradient-to-b from-background via-accent/5 to-background">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">Our Engagement Process</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              A proven methodology to deliver enterprise solutions on time and on budget.
-            </p>
-          </motion.div>
-
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="hidden lg:block absolute left-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-primary to-accent -translate-x-1/2" />
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-              {process.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className={`${index % 2 === 1 ? 'lg:translate-y-12' : ''}`}
-                >
-                  <div className="p-8 rounded-2xl bg-card border border-border hover:border-primary/50 transition-all">
-                    <div className="flex items-center gap-4 mb-4">
-                      <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary to-accent flex items-center justify-center flex-shrink-0">
-                        <span className="text-primary-foreground font-bold">{item.step}</span>
-                      </div>
-                      <h3 className="text-xl font-bold text-foreground">{item.title}</h3>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed">{item.description}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
+      <section id="contact" className="border-t border-white/[0.06] bg-[#0d0d0d]">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-24">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            <motion.div variants={slideLeft} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+              <p className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-5">Book a consultation</p>
+              <h2 className="text-h2 mb-5">Let&apos;s find the right fit <span className="gradient-text">for your team.</span></h2>
+              <p className="text-sm text-[#666] leading-relaxed max-w-sm">Tell us about your operations and we&apos;ll propose how Archomak products can integrate into your workflows. No obligation.</p>
+            </motion.div>
+            <motion.div variants={slideRight} initial="hidden" whileInView="visible" viewport={viewportOnce}>
+              <ContactForm />
+            </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-24 px-4">
-        <div className="max-w-4xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-6 text-balance">
-              Ready to Transform Your Enterprise?
-            </h2>
-            <p className="text-lg text-muted-foreground mb-12 max-w-2xl mx-auto">
-              Let's discuss how Archomak can help you achieve your business objectives with innovative solutions tailored to your needs.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link
-                href="/contact"
-                className="px-8 py-3 rounded-lg bg-primary text-primary-foreground hover:bg-primary/90 transition-all font-medium flex items-center justify-center gap-2 group"
-              >
-                Schedule Consultation
-                <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link
-                href="/contact"
-                className="px-8 py-3 rounded-lg border border-border bg-background hover:bg-muted text-foreground transition-colors font-medium"
-              >
-                Download Case Studies
-              </Link>
-            </div>
-          </motion.div>
         </div>
       </section>
 
       <Footer />
-    </main>
-  )
+    </div>
+  );
 }
