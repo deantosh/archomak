@@ -6,40 +6,79 @@ export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border bg-background">
+    <footer className="border-t border-white/10 bg-[#070707]">
+      <style>{`
+        @keyframes footer-logo-pulse {
+          0%,100% { box-shadow: 0 0 0 rgba(59,130,246,0); }
+          50% { box-shadow: 0 0 18px rgba(59,130,246,0.5); }
+        }
+        .footer-link {
+          transition: color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-link:hover {
+          color: #fff;
+          transform: translate3d(3px,0,0);
+        }
+        .footer-social {
+          transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+        }
+        .footer-social:hover {
+          border-color: rgba(6,182,212,0.6);
+          background-color: rgba(6,182,212,0.08);
+          transform: scale(1.15);
+        }
+        .footer-logo-wrap:hover .footer-logo {
+          animation: footer-logo-pulse 1.4s ease-in-out infinite;
+        }
+      `}</style>
       <div className="max-w-7xl mx-auto px-4 py-16">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="footer-logo-wrap flex items-center gap-3 mb-4">
               <Image
-                src="/logo/favico.png"
+                src="/logo/logo.png"
                 alt="Archomak logo"
-                width={40}
-                height={40}
-                className="h-10 w-10 object-contain"
+                width={120}
+                height={120}
+                className="footer-logo rounded-md object-contain"
               />
-              <span className="text-base font-semibold tracking-wide text-foreground">
+              {/* <span className="text-base font-semibold tracking-wide text-white">
                 Archomak
-              </span>
+              </span> */}
             </div>
-            <p className="text-sm text-muted-foreground">
-              Innovating at the intersection of human creativity and advanced
-              engineering.
+            <p className="text-sm text-slate-300">
+              Building practical digital products for Africa and the world.
             </p>
           </div>
 
           {/* Products */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Products</h3>
+            <h3 className="font-bold text-white mb-4">Products</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/products"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  href="/products/7"
+                  className="footer-link text-sm text-slate-300"
+                >
+                  Kunanyesha
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products/1"
+                  className="footer-link text-sm text-slate-300"
                 >
                   LuDa Lens
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/products/8"
+                  className="footer-link text-sm text-slate-300"
+                >
+                  Book & Pay
                 </Link>
               </li>
             </ul>
@@ -47,28 +86,20 @@ export default function Footer() {
 
           {/* Company */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Company</h3>
+            <h3 className="font-bold text-white mb-4">Company</h3>
             <ul className="space-y-2">
               <li>
                 <Link
-                  href="/about"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  href="/enterprise"
+                  className="footer-link text-sm text-slate-300"
                 >
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/careers"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  Careers
+                  Enterprise
                 </Link>
               </li>
               <li>
                 <Link
                   href="/contact"
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors"
+                  className="footer-link text-sm text-slate-300"
                 >
                   Contact
                 </Link>
@@ -76,35 +107,47 @@ export default function Footer() {
             </ul>
           </div>
 
-          {/* Social */}
+          {/* Legal */}
           <div>
-            <h3 className="font-bold text-foreground mb-4">Follow</h3>
+            <h3 className="font-bold text-white mb-4">Why Archomak</h3>
+            <p className="text-sm text-slate-400 leading-relaxed">
+              We are not an AI company. We are a product company that uses AI
+              where it creates measurable value.
+            </p>
+            <p className="text-xs text-slate-600 mt-3">
+              Founded by Lucky Archibong &amp; Deantosh Daiddoh
+            </p>
+          </div>
+
+          {/* Social */}
+          <div className="md:col-span-4 pt-2">
+            <h3 className="font-bold text-white mb-4">Social</h3>
             <div className="flex gap-3">
               <a
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
                 href="#"
               >
                 <Twitter
                   size={18}
-                  className="text-muted-foreground hover:text-accent"
+                  className="text-slate-300 transition-colors duration-200 hover:text-cyan-300"
                 />
               </a>
               <a
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
                 href="#"
               >
                 <Linkedin
                   size={18}
-                  className="text-muted-foreground hover:text-accent"
+                  className="text-slate-300 transition-colors duration-200 hover:text-cyan-300"
                 />
               </a>
               <a
-                className="p-2 rounded-lg hover:bg-muted transition-colors"
+                className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
                 href="#"
               >
                 <Github
                   size={18}
-                  className="text-muted-foreground hover:text-accent"
+                  className="text-slate-300 transition-colors duration-200 hover:text-cyan-300"
                 />
               </a>
             </div>
@@ -112,24 +155,13 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
+        <div className="border-t border-white/10 pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+          <p className="text-sm text-slate-400">
             © {currentYear} Archomak. All rights reserved.
           </p>
-          <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Privacy Policy
-            </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
-              Terms of Service
-            </Link>
-          </div>
+          <p className="text-xs text-slate-500">
+            Product company. AI-enabled execution. Africa-first perspective.
+          </p>
         </div>
       </div>
     </footer>
