@@ -33,7 +33,7 @@ const productData: Record<string, ProductData> = {
   "1": {
     id: "1",
     tag: "Data Capture",
-    status: "with held",
+    status: "Limited",
     name: "LuDa Lens",
     tagline: "Mobile document intelligence for field teams",
     longDescription:
@@ -117,7 +117,7 @@ const productData: Record<string, ProductData> = {
     cta: {
       primary: "Get started",
       primaryHref: "/contact",
-      secondary: "View Enterprise",
+      secondary: "Explore enterprise deployment",
       secondaryHref: "/enterprise",
     },
   },
@@ -205,7 +205,7 @@ const productData: Record<string, ProductData> = {
     cta: {
       primary: "Start free trial",
       primaryHref: "/contact",
-      secondary: "Enterprise options",
+      secondary: "Explore enterprise deployment",
       secondaryHref: "/enterprise",
     },
   },
@@ -296,7 +296,7 @@ const productData: Record<string, ProductData> = {
     cta: {
       primary: "Join beta waitlist",
       primaryHref: "/contact",
-      secondary: "Learn more",
+      secondary: "Explore enterprise deployment",
       secondaryHref: "/enterprise",
     },
   },

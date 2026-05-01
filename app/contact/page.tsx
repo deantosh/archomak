@@ -75,9 +75,9 @@ export default function ContactPage() {
             viewport={viewportOnce}
           >
             <p className="text-sm text-[#666] leading-relaxed mb-10 max-w-sm">
-              Whether you have a product question, want to explore an enterprise
-              deployment, or just want to say hello — we&apos;re happy to hear
-              from you.
+              Share the problem you&apos;re solving and your goals. We&apos;ll
+              help you choose the right product path, rollout approach, or next
+              implementation step.
             </p>
             <div className="flex flex-col gap-6 mb-10">
               {contactInfo.map((item) => {
@@ -132,13 +132,13 @@ export default function ContactPage() {
             </div>
             <div className="mt-12 pt-8 border-t border-white/[0.06]">
               <p className="text-xs text-[#444] mb-3">
-                Looking for enterprise options?
+                Need enterprise deployment support?
               </p>
               <Link
                 href="/enterprise"
                 className="text-sm text-[#06b6d4] hover:text-[#22d3ee] transition-colors"
               >
-                Visit our Enterprise page →
+                Book an enterprise consultation →
               </Link>
             </div>
           </motion.div>

@@ -51,7 +51,7 @@ const principles = [
   },
   {
     label: "AI when it works",
-    body: "We add machine learning when it genuinely improves the outcome, not to fill a slide deck.",
+    body: "We apply AI and automation where they improve speed, accuracy, and cost efficiency for teams on the ground.",
   },
   {
     label: "Shipped, not pitched",
@@ -139,7 +139,7 @@ export default function HomePage() {
                 href="/contact"
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
               >
-                Talk to us
+                Contact Product Team
               </Link>
             </motion.div>
           </motion.div>
@@ -271,8 +271,11 @@ export default function HomePage() {
                 className="text-2xl md:text-3xl font-semibold leading-tight text-white mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                "We don't add AI for the pitch.{" "}
-                <span className="gradient-text">We add it when it works.</span>"
+                "We build for outcomes first.{" "}
+                <span className="gradient-text">
+                  Technology follows the problem.
+                </span>
+                "
               </blockquote>
               <p className="text-sm text-[#555]">
                 — Lucky Archibong, Founder · Archomak
@@ -331,7 +334,7 @@ export default function HomePage() {
               href="/enterprise"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors flex-shrink-0"
             >
-              Enterprise options <ArrowRight size={14} />
+              Explore Enterprise Deployment <ArrowRight size={14} />
             </Link>
           </motion.div>
         </div>
@@ -380,7 +383,7 @@ export default function HomePage() {
               className="relative inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-[#06b6d4] text-[#080808] font-semibold text-base hover:bg-[#22d3ee] transition-colors glow-cyan"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Book a Consultation
+              Book Enterprise Consultation
               <ArrowRight size={18} />
             </Link>
           </motion.div>

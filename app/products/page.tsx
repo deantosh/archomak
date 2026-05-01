@@ -12,7 +12,7 @@ const products = [
   {
     id: "1",
     tag: "Data Capture",
-    status: "with held",
+    status: "Limited",
     name: "LuDa Lens",
     tagline: "Mobile document intelligence for field teams",
     description:
@@ -219,18 +219,18 @@ export default function ProductsPage() {
               className="text-xl font-bold text-white mb-2"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Need a custom solution?
+              Planning a multi-team rollout?
             </h3>
             <p className="text-sm text-[#666]">
-              Our enterprise team builds tailored deployments for large
-              organisations.
+              Work with our enterprise team on integration, security, and
+              deployment plans built for scale.
             </p>
           </div>
           <Link
-            href="/contact"
+            href="/enterprise#contact"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors flex-shrink-0"
           >
-            Talk to enterprise <ArrowRight size={14} />
+            Book enterprise consultation <ArrowRight size={14} />
           </Link>
         </div>
       </section>

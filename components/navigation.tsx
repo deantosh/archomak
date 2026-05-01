@@ -81,7 +81,11 @@ export default function Navigation() {
               className="hidden md:flex items-center gap-8"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.5,
+                delay: 0.1,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               {navItems.map((item) => (
                 <Link
@@ -103,13 +107,17 @@ export default function Navigation() {
               className="hidden md:flex items-center"
               initial={{ opacity: 0, x: 12 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+              transition={{
+                duration: 0.5,
+                delay: 0.15,
+                ease: [0.16, 1, 0.3, 1],
+              }}
             >
               <Link
                 href="/enterprise#contact"
                 className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
               >
-                Book Consultation
+                Book Enterprise Consultation
               </Link>
             </motion.div>
 
@@ -163,7 +171,7 @@ export default function Navigation() {
                     href="/enterprise#contact"
                     className="w-full flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
                   >
-                    Book Consultation
+                    Book Enterprise Consultation
                   </Link>
                 </motion.div>
               </motion.nav>

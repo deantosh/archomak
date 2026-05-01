@@ -111,8 +111,8 @@ export default function Footer() {
           <div>
             <h3 className="font-bold text-white mb-4">Why Archomak</h3>
             <p className="text-sm text-slate-400 leading-relaxed">
-              We are not an AI company. We are a product company that uses AI
-              where it creates measurable value.
+              We build practical products that solve operational challenges and
+              deliver measurable outcomes for teams across Africa and beyond.
             </p>
             <p className="text-xs text-slate-600 mt-3">
               Founded by Lucky Archibong &amp; Deantosh Daiddoh
