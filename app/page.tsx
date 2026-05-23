@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Database, CloudRain, ShoppingBag } from "lucide-react";
+import { ArrowRight, CloudRain, ShoppingBag } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { fadeUp, fadeIn, scaleIn, stagger, viewportOnce } from "@/lib/motion";
@@ -10,23 +10,12 @@ import { getProductDetailsHref, getProductWebsiteHref } from "@/lib/products";
 
 const products = [
   {
-    id: "1",
-    tag: "Data Capture",
-    name: "LuDa Lens",
-    description:
-      "Mobile document intelligence for fast capture, extraction, and structured data on the go.",
-    price: "From $7/mo",
-    icon: Database,
-    detailsHref: getProductDetailsHref("1"),
-    websiteHref: getProductWebsiteHref("1", "home-card"),
-  },
-  {
     id: "7",
     tag: "Climate Tech",
     name: "Kunanyesha",
     description:
       "Real-time county-level weather data and automated reporting for all 47 counties in Kenya.",
-    price: "From KES 1,294/mo",
+    price: "From KES 999/mo",
     icon: CloudRain,
     detailsHref: getProductDetailsHref("7"),
     websiteHref: getProductWebsiteHref("7", "home-card"),
@@ -37,7 +26,7 @@ const products = [
     name: "Book & Pay",
     description:
       "Unified bookings, mobile money, and card payment platform for service businesses in Ghana.",
-    price: "From GHS 90/mo",
+    price: "Commission-based",
     icon: ShoppingBag,
     detailsHref: getProductDetailsHref("8"),
     websiteHref: getProductWebsiteHref("8", "home-card"),
@@ -57,15 +46,6 @@ const principles = [
     label: "Shipped, not pitched",
     body: "Our products are live, used, and evolving based on real feedback from real users.",
   },
-];
-
-const ticker = [
-  "3 Products Live",
-  "2 Continents",
-  "AI-Powered",
-  "Enterprise-Ready",
-  "Africa-First",
-  "Built to Scale",
 ];
 
 export default function HomePage() {
@@ -154,24 +134,6 @@ export default function HomePage() {
           />
         </div>
       </section>
-
-      {/* ── TICKER ──────────────────────────────────────────────────────── */}
-      <div className="border-y border-white/[0.06] py-4 overflow-hidden">
-        <div
-          className="flex gap-12 whitespace-nowrap"
-          style={{ animation: "marquee-loop 28s linear infinite" }}
-        >
-          {[...ticker, ...ticker].map((item, i) => (
-            <span
-              key={i}
-              className="text-xs font-semibold uppercase tracking-[0.15em] text-[#333] flex-shrink-0"
-            >
-              {item}
-              <span className="ml-12 text-[#222]">·</span>
-            </span>
-          ))}
-        </div>
-      </div>
 
       {/* ── PRODUCTS ──────────────────────────────────────────────────── */}
       <section className="max-w-7xl mx-auto px-6 lg:px-8 py-28">

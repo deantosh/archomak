@@ -2,34 +2,13 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, Database, CloudRain, ShoppingBag } from "lucide-react";
+import { ArrowRight, CloudRain, ShoppingBag } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { fadeUp, scaleIn, stagger, viewportOnce } from "@/lib/motion";
 import { getProductDetailsHref, getProductWebsiteHref } from "@/lib/products";
 
 const products = [
-  {
-    id: "1",
-    tag: "Data Capture",
-    status: "Limited",
-    name: "LuDa Lens",
-    tagline: "Mobile document intelligence for field teams",
-    description:
-      "Capture documents from your phone and turn invoices, IDs, forms, and receipts into structured data in seconds.",
-    features: [
-      "OCR + ML extraction",
-      "Batch processing",
-      "API-first",
-      "Structured JSON output",
-      "Validation rules",
-      "Audit trail",
-    ],
-    price: "From $7/mo",
-    icon: Database,
-    detailsHref: getProductDetailsHref("1"),
-    websiteHref: getProductWebsiteHref("1", "products-card"),
-  },
   {
     id: "7",
     tag: "Climate Tech",
@@ -46,7 +25,7 @@ const products = [
       "Historical data",
       "API access",
     ],
-    price: "From KES 1,294/mo",
+    price: "From KES 999/mo",
     icon: CloudRain,
     detailsHref: getProductDetailsHref("7"),
     websiteHref: getProductWebsiteHref("7", "products-card"),
@@ -54,7 +33,7 @@ const products = [
   {
     id: "8",
     tag: "Commerce",
-    status: "Beta",
+    status: "Coming soon",
     name: "Book & Pay",
     tagline: "Bookings and payments for African service businesses",
     description:
@@ -67,7 +46,7 @@ const products = [
       "Analytics",
       "Multi-staff",
     ],
-    price: "From GHS 90/mo",
+    price: "Commission-based",
     icon: ShoppingBag,
     detailsHref: getProductDetailsHref("8"),
     websiteHref: getProductWebsiteHref("8", "products-card"),
