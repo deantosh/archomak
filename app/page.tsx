@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { ArrowRight, CloudRain, ShoppingBag } from "lucide-react";
+import { CloudRain, ShoppingBag, ArrowRight } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { fadeUp, fadeIn, scaleIn, stagger, viewportOnce } from "@/lib/motion";
@@ -54,83 +54,77 @@ export default function HomePage() {
       <Navigation />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
-      <section className="relative flex flex-col justify-center min-h-screen pt-24 pb-16">
-        <div className="grid-overlay absolute inset-0 pointer-events-none" />
+      <section className="relative flex flex-col justify-center min-h-[90vh] lg:min-h-screen pt-40 pb-24">
+        {/* Refined background gradient */}
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 80% 60% at 50% -10%, rgba(6,182,212,0.12) 0%, transparent 70%)",
+              "radial-gradient(ellipse 100% 80% at 50% 20%, rgba(6,182,212,0.04) 0%, transparent 60%)",
           }}
         />
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full">
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8 w-full flex flex-col items-center text-center">
           <motion.div
-            variants={stagger}
-            initial="hidden"
-            animate="visible"
-            className="max-w-4xl"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="mb-12"
           >
-            <motion.div variants={fadeUp} className="mb-8">
-              <span className="tag-pill">Product Company · Africa</span>
-            </motion.div>
+            <span className="text-xs font-medium tracking-widest text-[#666] uppercase">
+              Product Company · Africa
+            </span>
+          </motion.div>
 
-            <motion.h1
-              variants={stagger}
-              className="text-display mb-8"
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.1 }}
+            className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight mb-8 leading-[1.1] max-w-5xl"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            Build operational
+            <br />
+            <span className="font-medium">excellence</span>
+            <br />
+            with elegant products.
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
+            className="text-lg text-[#999] max-w-2xl mb-12 leading-relaxed font-light"
+          >
+            We design and ship digital products that solve real problems for African businesses. Built for resilience. Designed for scale.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
+            className="flex flex-col sm:flex-row items-center gap-4 justify-center"
+          >
+            <Link
+              href="/products"
+              className="px-8 py-4 rounded-full bg-[#06b6d4] text-[#080808] font-medium text-sm hover:bg-[#22d3ee] transition-all duration-300 hover:shadow-lg hover:shadow-[#06b6d4]/20"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              {[
-                "We",
-                "turn",
-                "hard",
-                "problems",
-                "into",
-                "elegant",
-                "products.",
-              ].map((word) => (
-                <motion.span
-                  key={word}
-                  variants={fadeUp}
-                  className="inline-block mr-[0.3em]"
-                >
-                  {word}
-                </motion.span>
-              ))}
-            </motion.h1>
-
-            <motion.p variants={fadeUp} className="text-body-lg max-w-lg mb-10">
-              Archomak ships practical digital products for African businesses —
-              powered by AI where it matters, built to scale where it counts.
-            </motion.p>
-
-            <motion.div
-              variants={fadeUp}
-              className="flex flex-wrap items-center gap-4"
+              Explore Products
+            </Link>
+            <Link
+              href="/contact"
+              className="px-8 py-4 rounded-full border border-white/[0.15] text-white font-medium text-sm hover:bg-white/[0.05] transition-all duration-300"
             >
-              <Link
-                href="/products"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#06b6d4] text-[#080808] font-semibold text-sm hover:bg-[#22d3ee] transition-colors"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                View Products <ArrowRight size={16} />
-              </Link>
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
-              >
-                Contact Product Team
-              </Link>
-            </motion.div>
+              Get in Touch
+            </Link>
           </motion.div>
 
           <motion.div
-            variants={fadeIn}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.8 }}
-            className="mt-20 h-px w-full max-w-2xl bg-gradient-to-r from-[#06b6d4]/30 via-white/10 to-transparent"
-            style={{ transformOrigin: "left" }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1, ease: "easeOut", delay: 0.6 }}
+            className="mt-20 h-px w-32 bg-gradient-to-r from-transparent via-[#06b6d4]/30 to-transparent"
           />
         </div>
       </section>
