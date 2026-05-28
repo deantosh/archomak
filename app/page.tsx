@@ -96,7 +96,8 @@ export default function HomePage() {
             transition={{ duration: 0.9, ease: "easeOut", delay: 0.2 }}
             className="text-lg text-[#999] max-w-2xl mb-12 leading-relaxed font-light"
           >
-            We design and ship digital products that solve real problems for African businesses. Built for resilience. Designed for scale.
+            We design and ship digital products that solve real problems for
+            African businesses. Built for resilience. Designed for scale.
           </motion.p>
 
           <motion.div
@@ -144,7 +145,7 @@ export default function HomePage() {
             Products
           </motion.p>
           <motion.h2 variants={fadeUp} className="text-h2 mb-14 max-w-lg">
-            Three focused products.
+            Focused products.
             <br />
             One clear mission.
           </motion.h2>

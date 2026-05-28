@@ -80,7 +80,7 @@ export default function ProductsPage() {
               className="text-h1 max-w-2xl mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Three products.
+              Products.
               <br />
               <span className="gradient-text">Built for real operations.</span>
             </motion.h1>
@@ -190,27 +190,64 @@ export default function ProductsPage() {
         </motion.div>
       </section>
 
-      {/* Enterprise CTA */}
-      <section className="border-t border-white/[0.06] bg-[#0d0d0d]">
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div>
-            <h3
-              className="text-xl font-bold text-white mb-2"
-              style={{ fontFamily: "var(--font-display)" }}
-            >
-              Planning a multi-team rollout?
-            </h3>
-            <p className="text-sm text-[#666]">
-              Work with our enterprise team on integration, security, and
-              deployment plans built for scale.
-            </p>
+      {/* Enterprise — premium CTA */}
+      <section className="relative py-24">
+        <div
+          className="absolute inset-0 pointer-events-none"
+          aria-hidden
+          style={{
+            background:
+              "radial-gradient(ellipse 60% 40% at 10% 20%, rgba(6,182,212,0.06) 0%, transparent 25%), linear-gradient(90deg, rgba(2,16,17,0.6), rgba(6,16,18,0.55))",
+          }}
+        />
+
+        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+          <div className="mx-auto bg-white/5 backdrop-blur-md border border-white/[0.06] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 shadow-2xl">
+            <div className="flex-1 text-center lg:text-left">
+              <h3
+                className="text-3xl lg:text-4xl font-semibold text-white mb-3"
+                style={{ fontFamily: "var(--font-display)" }}
+              >
+                Enterprise-grade support & integrations
+              </h3>
+              <p className="text-lg text-[#d6d6d6] max-w-2xl mx-auto lg:mx-0 mb-6">
+                Plan multi-team rollouts with SSO, SLAs, security reviews, and
+                bespoke integrations. We partner with operations teams to
+                deliver reliable, auditable deployments at scale.
+              </p>
+
+              <ul className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start text-sm text-[#bfbfbf]">
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
+                  Dedicated success manager
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
+                  Security & compliance (SSO, audit logs)
+                </li>
+                <li className="flex items-center gap-3">
+                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
+                  Custom onboarding & training
+                </li>
+              </ul>
+            </div>
+
+            <div className="flex flex-col items-center lg:items-end gap-4">
+              <Link
+                href="/enterprise#contact"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#22d3ee] text-[#080808] font-semibold shadow-lg hover:scale-[1.02] transition-transform"
+              >
+                Book consultation <ArrowRight size={16} />
+              </Link>
+
+              <Link
+                href="/contact"
+                className="text-sm text-[#cfcfcf] hover:text-white"
+              >
+                Contact sales
+              </Link>
+            </div>
           </div>
-          <Link
-            href="/enterprise#contact"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors flex-shrink-0"
-          >
-            Book enterprise consultation <ArrowRight size={14} />
-          </Link>
         </div>
       </section>
 
