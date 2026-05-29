@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { Mail, MapPin, Twitter, Linkedin, Github } from "lucide-react";
+import { Mail, MapPin, Twitter, Linkedin } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import ContactForm from "@/app/enterprise/contact-form";
@@ -18,19 +18,18 @@ const contactInfo = [
   {
     icon: MapPin,
     label: "Headquarters",
-    value: "Africa · Building for the world",
+    value: "Global · Building for the world",
     href: null,
   },
 ];
 
 const socials = [
-  { icon: Twitter, label: "Twitter", href: "https://twitter.com/archomak" },
+  { icon: Twitter, label: "X", href: "https://x.com/archomak" },
   {
     icon: Linkedin,
     label: "LinkedIn",
     href: "https://linkedin.com/company/archomak",
   },
-  { icon: Github, label: "GitHub", href: "https://github.com/archomak" },
 ];
 
 export default function ContactPage() {
