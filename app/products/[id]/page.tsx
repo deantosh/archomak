@@ -35,7 +35,7 @@ const productData: Record<string, ProductData> = {
     tag: "Climate Tech",
     status: "Live",
     name: "Kunanyesha",
-    tagline: "Weather intelligence for African operations",
+    tagline: "Weather intelligence for operations",
     longDescription:
       "Kunanyesha delivers hyperlocal weather intelligence for all 47 counties in Kenya. Automated weekly reports with geospatial analysis help agricultural teams, logistics operators, and government agencies make weather-informed decisions.",
     features: [
@@ -100,7 +100,7 @@ const productData: Record<string, ProductData> = {
     tag: "Commerce",
     status: "Coming soon",
     name: "Book & Pay",
-    tagline: "Bookings and payments for African service businesses",
+    tagline: "Bookings and payments for service businesses",
     longDescription:
       "Book & Pay gives service businesses in Ghana a single platform to manage appointments, accept mobile money and card payments, and automate customer reminders — without needing a developer or multiple subscriptions.",
     features: [
