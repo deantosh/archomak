@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { CloudRain, ShoppingBag, ArrowRight } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
@@ -49,18 +49,32 @@ const principles = [
 ];
 
 export default function HomePage() {
+  const { scrollYProgress } = useScroll();
+  const heroY = useTransform(scrollYProgress, [0, 0.35, 1], [0, -20, -50]);
+
   return (
     <div className="bg-[#080808] text-[#f2f2f2] min-h-screen overflow-x-hidden">
       <Navigation />
 
       {/* ── HERO ──────────────────────────────────────────────────────────── */}
       <section className="relative flex flex-col justify-center min-h-[90vh] lg:min-h-screen pt-40 pb-24">
-        {/* Refined background gradient */}
+        <motion.div
+          className="absolute inset-0"
+          style={{
+            y: heroY,
+            backgroundImage: "url('/hero-bg.svg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            opacity: 0.45,
+          }}
+        />
+        <div className="absolute inset-0 bg-[#080808]/80" />
         <div
           className="absolute inset-0 pointer-events-none"
           style={{
             background:
-              "radial-gradient(ellipse 100% 80% at 50% 20%, rgba(6,182,212,0.04) 0%, transparent 60%)",
+              "radial-gradient(ellipse 100% 80% at 50% 20%, rgba(6,182,212,0.12) 0%, transparent 65%)",
           }}
         />
 
@@ -70,11 +84,7 @@ export default function HomePage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="mb-12"
-          >
-            <span className="text-xs font-medium tracking-widest text-[#666] uppercase">
-              Product Company · Business
-            </span>
-          </motion.div>
+          ></motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}

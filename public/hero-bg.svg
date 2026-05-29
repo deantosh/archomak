@@ -1,0 +1,35 @@
+<svg width="1600" height="900" viewBox="0 0 1600 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGradient" x1="0" y1="0" x2="1600" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#041017" />
+      <stop offset="100%" stop-color="#08151f" />
+    </linearGradient>
+    <radialGradient id="glowA" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(1300 220) rotate(30) scale(520 520)">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.45" />
+      <stop offset="100%" stop-color="#06b6d4" stop-opacity="0" />
+    </radialGradient>
+    <radialGradient id="glowB" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(250 280) rotate(0) scale(420 420)">
+      <stop offset="0%" stop-color="#22d3ee" stop-opacity="0.24" />
+      <stop offset="100%" stop-color="#22d3ee" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="panelGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.85" />
+      <stop offset="100%" stop-color="#0d1727" stop-opacity="0.45" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#bgGradient)" />
+  <circle cx="1280" cy="180" r="260" fill="url(#glowA)" />
+  <circle cx="240" cy="300" r="210" fill="url(#glowB)" />
+  <circle cx="900" cy="720" r="280" fill="#0a2235" opacity="0.55" />
+  <path d="M360 500C430 450 550 470 620 420C690 370 790 380 860 430C930 480 1020 460 1090 500" stroke="#06b6d4" stroke-width="2" opacity="0.7" />
+  <path d="M110 620C180 560 260 590 330 540C400 500 490 520 560 470C630 420 720 440 790 490" stroke="#22d3ee" stroke-width="2" opacity="0.6" />
+  <g opacity="0.72">
+    <rect x="180" y="140" width="420" height="260" rx="40" fill="url(#panelGradient)" stroke="#2d526f" stroke-width="1.5" />
+    <rect x="920" y="280" width="420" height="220" rx="32" fill="url(#panelGradient)" stroke="#1d4f6b" stroke-width="1.5" />
+    <rect x="560" y="540" width="370" height="210" rx="30" fill="url(#panelGradient)" stroke="#1e4667" stroke-width="1.5" />
+  </g>
+  <circle cx="1240" cy="620" r="80" fill="#06b6d4" opacity="0.12" />
+  <circle cx="420" cy="700" r="100" fill="#22d3ee" opacity="0.14" />
+  <circle cx="1480" cy="340" r="40" fill="#ffffff" opacity="0.14" />
+  <circle cx="240" cy="140" r="24" fill="#ffffff" opacity="0.24" />
+</svg>
