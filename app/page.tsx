@@ -36,7 +36,7 @@ const products = [
 const principles = [
   {
     label: "Solve real problems",
-    body: "We build for the operational realities of African businesses — unreliable infrastructure, fragmented payments, low connectivity.",
+    body: "We build for the operational realities of modern businesses — unreliable infrastructure, fragmented payments, low connectivity.",
   },
   {
     label: "AI when it works",
@@ -72,7 +72,7 @@ export default function HomePage() {
             className="mb-12"
           >
             <span className="text-xs font-medium tracking-widest text-[#666] uppercase">
-              Product Company · Africa
+              Product Company · Business
             </span>
           </motion.div>
 
@@ -83,11 +83,11 @@ export default function HomePage() {
             className="text-5xl sm:text-6xl lg:text-7xl font-light tracking-tight mb-8 leading-[1.1] max-w-5xl"
             style={{ fontFamily: "var(--font-display)" }}
           >
-            Build operational
+            The product
             <br />
-            <span className="font-medium">excellence</span>
+            <span className="font-medium">you have been</span>
             <br />
-            with elegant products.
+            waiting for.
           </motion.h1>
 
           <motion.p
@@ -97,7 +97,7 @@ export default function HomePage() {
             className="text-lg text-[#999] max-w-2xl mb-12 leading-relaxed font-light"
           >
             We design and ship digital products that solve real problems for
-            African businesses. Built for resilience. Designed for scale.
+            businesses. Built for resilience. Designed for scale.
           </motion.p>
 
           <motion.div
@@ -108,14 +108,14 @@ export default function HomePage() {
           >
             <Link
               href="/products"
-              className="px-8 py-4 rounded-full bg-[#06b6d4] text-[#080808] font-medium text-sm hover:bg-[#22d3ee] transition-all duration-300 hover:shadow-lg hover:shadow-[#06b6d4]/20"
+              className="px-8 py-4 rounded-md bg-[#06b6d4] text-[#080808] font-medium text-sm hover:bg-[#22d3ee] transition-colors duration-200"
               style={{ fontFamily: "var(--font-display)" }}
             >
               Explore Products
             </Link>
             <Link
               href="/contact"
-              className="px-8 py-4 rounded-full border border-white/[0.15] text-white font-medium text-sm hover:bg-white/[0.05] transition-all duration-300"
+              className="px-8 py-4 rounded-md border border-white/[0.15] text-white font-medium text-sm hover:bg-white/[0.04] transition-colors duration-200"
             >
               Get in Touch
             </Link>

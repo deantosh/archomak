@@ -15,9 +15,9 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
-const defaultTitle = "Archomak | Digital Products for Africa and the World";
+const defaultTitle = "Archomak | Digital Products for Businesses and the World";
 const defaultDescription =
-  "Archomak builds practical digital products for enterprises and operations teams across Africa and globally, using AI where it creates measurable value.";
+  "Archomak builds practical digital products for enterprises and operations teams worldwide, using AI where it creates measurable value.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     "workflow automation",
     "document intelligence",
     "weather reporting",
-    "african technology company",
+    "enterprise technology company",
     "product company",
   ],
   authors: [{ name: "Archomak" }],
