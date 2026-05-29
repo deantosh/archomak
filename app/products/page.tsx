@@ -14,7 +14,7 @@ const products = [
     tag: "Climate Tech",
     status: "Live",
     name: "Kunanyesha",
-    tagline: "Weather intelligence for African operations",
+    tagline: "Weather intelligence for operations",
     description:
       "Real-time county-level weather data for all 47 counties in Kenya with automated weekly reports and geospatial analysis.",
     features: [
@@ -35,7 +35,7 @@ const products = [
     tag: "Commerce",
     status: "Coming soon",
     name: "Book & Pay",
-    tagline: "Bookings and payments for African service businesses",
+    tagline: "Bookings and payments for service businesses",
     description:
       "One platform for appointment scheduling, mobile money, and card payments — built for service businesses in Ghana.",
     features: [
@@ -85,8 +85,8 @@ export default function ProductsPage() {
               <span className="gradient-text">Built for real operations.</span>
             </motion.h1>
             <motion.p variants={fadeUp} className="text-body-lg max-w-md">
-              Each product solves a specific problem for businesses in Africa —
-              with AI where it makes the work better.
+              Each product solves a specific problem for businesses — with AI
+              where it makes the work better.
             </motion.p>
           </motion.div>
         </div>
@@ -235,7 +235,7 @@ export default function ProductsPage() {
             <div className="flex flex-col items-center lg:items-end gap-4">
               <Link
                 href="/enterprise#contact"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-[#06b6d4] to-[#22d3ee] text-[#080808] font-semibold shadow-lg hover:scale-[1.02] transition-transform"
+                className="inline-flex items-center gap-3 px-6 py-3 rounded-md bg-gradient-to-r from-[#06b6d4] to-[#22d3ee] text-[#080808] font-semibold transition-colors"
               >
                 Book consultation <ArrowRight size={16} />
               </Link>

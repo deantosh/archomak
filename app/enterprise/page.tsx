@@ -142,14 +142,14 @@ export default function EnterprisePage() {
             >
               <a
                 href="#contact"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors"
                 style={{ fontFamily: "var(--font-display)" }}
               >
                 Book enterprise consultation <ArrowRight size={16} />
               </a>
               <Link
                 href="/products"
-                className="inline-flex items-center gap-2 px-6 py-3 rounded-lg border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-white/[0.12] text-[#888] text-sm font-medium hover:text-white hover:border-white/25 transition-colors"
               >
                 View products
               </Link>
