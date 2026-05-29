@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Github, Linkedin, Twitter } from "lucide-react";
+import { Linkedin, Twitter } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -49,7 +49,7 @@ export default function Footer() {
               </span> */}
             </div>
             <p className="text-sm text-slate-300">
-              Building practical digital products for Africa and the world.
+              Building practical digital products for businesses and the world.
             </p>
           </div>
 
@@ -112,7 +112,7 @@ export default function Footer() {
             <h3 className="font-bold text-white mb-4">Why Archomak</h3>
             <p className="text-sm text-slate-400 leading-relaxed">
               We build practical products that solve operational challenges and
-              deliver measurable outcomes for teams across Africa and beyond.
+              deliver measurable outcomes for teams across the world.
             </p>
             <p className="text-xs text-slate-600 mt-3">
               Founded by Lucky Archibong &amp; Deantosh Daiddoh
@@ -125,7 +125,10 @@ export default function Footer() {
             <div className="flex gap-3">
               <a
                 className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
-                href="#"
+                href="https://x.com/archomak"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="X"
               >
                 <Twitter
                   size={18}
@@ -134,18 +137,12 @@ export default function Footer() {
               </a>
               <a
                 className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
-                href="#"
+                href="https://linkedin.com/company/archomak"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn"
               >
                 <Linkedin
-                  size={18}
-                  className="text-slate-300 transition-colors duration-200 hover:text-cyan-300"
-                />
-              </a>
-              <a
-                className="footer-social p-2 rounded-lg bg-white/3 border border-white/10"
-                href="#"
-              >
-                <Github
                   size={18}
                   className="text-slate-300 transition-colors duration-200 hover:text-cyan-300"
                 />
@@ -160,7 +157,7 @@ export default function Footer() {
             © {currentYear} Archomak. All rights reserved.
           </p>
           <p className="text-xs text-slate-500">
-            Product company. AI-enabled execution. Africa-first perspective.
+            Product company. AI-enabled execution. Business-first perspective.
           </p>
         </div>
       </div>

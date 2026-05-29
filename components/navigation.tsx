@@ -115,7 +115,7 @@ export default function Navigation() {
             >
               <Link
                 href="/enterprise#contact"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-lg bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
+                className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
               >
                 Book Enterprise Consultation
               </Link>
@@ -169,7 +169,7 @@ export default function Navigation() {
                 <motion.div variants={fadeIn} className="pt-6">
                   <Link
                     href="/enterprise#contact"
-                    className="w-full flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-xl bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
+                    className="w-full flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-md bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
                   >
                     Book Enterprise Consultation
                   </Link>
