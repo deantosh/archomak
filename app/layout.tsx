@@ -1,23 +1,27 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Space_Grotesk } from "next/font/google";
+import { Outfit, Roboto, Roboto_Mono } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const geist = Geist({ subsets: ["latin"], variable: "--font-geist" });
-const geistMono = Geist_Mono({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-geist-mono",
+  variable: "--font-roboto",
+  weight: ["300", "400", "500", "700"],
 });
-const spaceGrotesk = Space_Grotesk({
+const robotoMono = Roboto_Mono({
   subsets: ["latin"],
-  variable: "--font-space-grotesk",
+  variable: "--font-roboto-mono",
+});
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
   weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
 const defaultTitle = "Archomak | Digital Products for Businesses and the World";
 const defaultDescription =
-  "Archomak builds practical digital products for enterprises and operations teams worldwide, using AI where it creates measurable value.";
+  "Archomak builds practical digital products for businesses and operations teams worldwide, using AI where it creates measurable value.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -30,11 +34,9 @@ export const metadata: Metadata = {
   keywords: [
     "Archomak",
     "digital products",
-    "enterprise software",
     "workflow automation",
-    "document intelligence",
     "weather reporting",
-    "enterprise technology company",
+    "bookings and payments",
     "product company",
   ],
   authors: [{ name: "Archomak" }],
@@ -108,10 +110,10 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${geist.variable} ${geistMono.variable} ${spaceGrotesk.variable} font-sans antialiased`}
+        className={`${roboto.variable} ${robotoMono.variable} ${outfit.variable} font-sans antialiased`}
       >
         <script
           type="application/ld+json"

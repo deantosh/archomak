@@ -47,14 +47,14 @@ export default function ContactForm({
   if (sent) {
     return (
       <div className="flex flex-col items-center justify-center py-16 gap-4 text-center">
-        <CheckCircle size={40} className="text-[#06b6d4]" />
+        <CheckCircle size={40} className="text-[#34a853]" />
         <h3
-          className="text-xl font-semibold text-white"
+          className="text-xl font-medium text-[#202124]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Message sent
         </h3>
-        <p className="text-sm text-[#666] max-w-xs">
+        <p className="text-sm text-[#5f6368] max-w-xs">
           We'll get back to you within one business day.
         </p>
       </div>
@@ -62,7 +62,7 @@ export default function ContactForm({
   }
 
   const field =
-    "w-full bg-[#111] border border-white/[0.1] rounded-lg px-4 py-3 text-sm text-white placeholder:text-[#444] focus:outline-none focus:border-[#06b6d4]/50 focus:ring-1 focus:ring-[#06b6d4]/30 transition-all";
+    "w-full bg-white border border-[#dadce0] rounded-lg px-4 py-3 text-sm text-[#202124] placeholder:text-[#80868b] focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]/30 transition-all";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">
@@ -74,7 +74,7 @@ export default function ContactForm({
             className={field}
           />
           {errors.name && (
-            <p className="text-xs text-red-400 mt-1">{errors.name.message}</p>
+            <p className="text-xs text-[#d93025] mt-1">{errors.name.message}</p>
           )}
         </div>
         <div>
@@ -85,7 +85,7 @@ export default function ContactForm({
             className={field}
           />
           {errors.email && (
-            <p className="text-xs text-red-400 mt-1">{errors.email.message}</p>
+            <p className="text-xs text-[#d93025] mt-1">{errors.email.message}</p>
           )}
         </div>
       </div>
@@ -103,7 +103,7 @@ export default function ContactForm({
           className={field}
         />
         {errors.subject && (
-          <p className="text-xs text-red-400 mt-1">{errors.subject.message}</p>
+          <p className="text-xs text-[#d93025] mt-1">{errors.subject.message}</p>
         )}
       </div>
       <div>
@@ -114,14 +114,13 @@ export default function ContactForm({
           className={`${field} resize-none`}
         />
         {errors.message && (
-          <p className="text-xs text-red-400 mt-1">{errors.message.message}</p>
+          <p className="text-xs text-[#d93025] mt-1">{errors.message.message}</p>
         )}
       </div>
       <button
         type="submit"
         disabled={loading}
-        className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-md bg-[#06b6d4] text-[#080808] text-sm font-semibold hover:bg-[#22d3ee] transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-        style={{ fontFamily: "var(--font-display)" }}
+        className="btn-pill btn-primary px-6 py-3 text-sm disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {loading ? "Sending..." : "Send message"}
         <Send size={15} />

@@ -10,7 +10,7 @@ import { stagger, fadeIn } from "@/lib/motion";
 
 const navItems = [
   { name: "Products", href: "/products" },
-  { name: "Enterprise", href: "/enterprise" },
+  { name: "Stories", href: "/stories" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -26,7 +26,7 @@ export default function Navigation() {
     const onScroll = () => {
       if (rafId) return;
       rafId = requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 40);
+        setScrolled(window.scrollY > 12);
         rafId = 0;
       });
     };
@@ -45,10 +45,10 @@ export default function Navigation() {
   return (
     <>
       <nav
-        className={`fixed w-full top-0 z-50 transition-all duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] ${
+        className={`fixed w-full top-0 z-50 bg-white transition-shadow duration-300 ${
           scrolled
-            ? "bg-[rgba(8,8,8,0.82)] backdrop-blur-[24px] border-b border-white/[0.07]"
-            : "bg-transparent border-b border-transparent"
+            ? "shadow-[0_1px_2px_rgba(60,64,67,0.3),0_1px_3px_1px_rgba(60,64,67,0.15)]"
+            : "border-b border-[#e8eaed]"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
@@ -61,24 +61,19 @@ export default function Navigation() {
             >
               <Link href="/" className="flex items-center gap-2.5 group">
                 <Image
-                  src="/logo/logo.png"
+                  src="/logo/wordmark.png"
                   alt="Archomak"
-                  width={120}
-                  height={120}
-                  className="rounded-md object-contain group-hover:opacity-80 transition-opacity"
+                  width={413}
+                  height={51}
+                  priority
+                  className="h-7 w-auto object-contain group-hover:opacity-80 transition-opacity"
                 />
-                {/* <span
-                  className="text-[15px] font-semibold tracking-tight text-white group-hover:text-white/80 transition-colors"
-                  style={{ fontFamily: "var(--font-display)" }}
-                >
-                  Archomak
-                </span> */}
               </Link>
             </motion.div>
 
-            {/* Center links desktop */}
+            {/* Links + CTA desktop, grouped right */}
             <motion.div
-              className="hidden md:flex items-center gap-8"
+              className="hidden md:flex items-center gap-7"
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{
@@ -91,43 +86,28 @@ export default function Navigation() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`nav-link text-sm font-medium transition-colors ${
-                    isActive(item.href)
-                      ? "text-white active"
-                      : "text-[#888] hover:text-white"
+                  className={`nav-link text-sm font-medium ${
+                    isActive(item.href) ? "active" : ""
                   }`}
                 >
                   {item.name}
                 </Link>
               ))}
-            </motion.div>
-
-            {/* CTA desktop */}
-            <motion.div
-              className="hidden md:flex items-center"
-              initial={{ opacity: 0, x: 12 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.5,
-                delay: 0.15,
-                ease: [0.16, 1, 0.3, 1],
-              }}
-            >
               <Link
-                href="/enterprise#contact"
-                className="inline-flex items-center px-4 py-2 text-sm font-medium rounded-md bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
+                href="/contact"
+                className="btn-pill btn-primary px-6 py-2.5 text-sm"
               >
-                Book Enterprise Consultation
+                Talk to us
               </Link>
             </motion.div>
 
             {/* Mobile hamburger */}
             <button
               onClick={() => setIsOpen((v) => !v)}
-              className="md:hidden flex items-center justify-center w-9 h-9 text-[#888] hover:text-white transition-colors"
+              className="md:hidden flex items-center justify-center w-10 h-10 rounded-full text-[#5f6368] hover:bg-[#f1f3f4] transition-colors"
               aria-label="Toggle menu"
             >
-              {isOpen ? <X size={20} /> : <Menu size={20} />}
+              {isOpen ? <X size={22} /> : <Menu size={22} />}
             </button>
           </div>
         </div>
@@ -142,23 +122,23 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.25 }}
-            className="fixed inset-0 z-40 bg-[#080808]/96 backdrop-blur-xl flex flex-col"
+            className="fixed inset-0 z-40 bg-white flex flex-col pt-16"
           >
-            <div className="flex-1 flex flex-col items-center justify-center px-8">
+            <div className="flex-1 flex flex-col px-6 pt-8">
               <motion.nav
                 variants={stagger}
                 initial="hidden"
                 animate="visible"
-                className="w-full max-w-xs flex flex-col gap-1"
+                className="w-full flex flex-col gap-1"
               >
                 {navItems.map((item) => (
                   <motion.div key={item.href} variants={fadeIn}>
                     <Link
                       href={item.href}
-                      className={`block py-4 text-3xl font-bold tracking-tight border-b border-white/[0.07] transition-colors ${
+                      className={`block py-4 px-4 text-2xl font-medium tracking-tight rounded-2xl transition-colors ${
                         isActive(item.href)
-                          ? "text-[#06b6d4]"
-                          : "text-white hover:text-[#06b6d4]"
+                          ? "text-[#1a73e8] bg-[#e8f0fe]"
+                          : "text-[#202124] hover:bg-[#f1f3f4]"
                       }`}
                       style={{ fontFamily: "var(--font-display)" }}
                     >
@@ -166,12 +146,12 @@ export default function Navigation() {
                     </Link>
                   </motion.div>
                 ))}
-                <motion.div variants={fadeIn} className="pt-6">
+                <motion.div variants={fadeIn} className="pt-6 px-4">
                   <Link
-                    href="/enterprise#contact"
-                    className="w-full flex items-center justify-center px-6 py-3.5 text-base font-semibold rounded-md bg-[#06b6d4] text-[#080808] hover:bg-[#22d3ee] transition-colors"
+                    href="/contact"
+                    className="btn-pill btn-primary w-full px-6 py-3.5 text-base"
                   >
-                    Book Enterprise Consultation
+                    Talk to us
                   </Link>
                 </motion.div>
               </motion.nav>

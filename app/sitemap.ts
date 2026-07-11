@@ -1,4 +1,5 @@
 import type { MetadataRoute } from "next";
+import { stories } from "@/lib/stories";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
 
@@ -7,12 +8,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const routes = [
     "/",
-    "/contact",
-    "/enterprise",
     "/products",
-    "/products/1",
-    "/products/7",
-    "/products/8",
+    "/stories",
+    "/contact",
+    ...stories.map((s) => `/stories/${s.slug}`),
   ];
 
   return routes.map((route) => ({

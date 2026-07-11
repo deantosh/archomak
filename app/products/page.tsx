@@ -1,252 +1,220 @@
 "use client";
 
+import { useMemo, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { ArrowRight, CloudRain, ShoppingBag } from "lucide-react";
+import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
-import { fadeUp, scaleIn, stagger, viewportOnce } from "@/lib/motion";
-import { getProductDetailsHref, getProductWebsiteHref } from "@/lib/products";
+import { fadeUp, stagger } from "@/lib/motion";
+import { getProductWebsiteHref } from "@/lib/products";
 
-const products = [
+type Product = {
+  id: string;
+  category: string;
+  status: "Live" | "Coming soon";
+  name: string;
+  tagline: string;
+  cover: string;
+  coverAlt: string;
+  href: string;
+  external: boolean;
+};
+
+const products: Product[] = [
   {
     id: "7",
-    tag: "Climate Tech",
+    category: "Climate Tech",
     status: "Live",
     name: "Kunanyesha",
-    tagline: "Weather intelligence for operations",
-    description:
-      "Real-time county-level weather data for all 47 counties in Kenya with automated weekly reports and geospatial analysis.",
-    features: [
-      "47-county coverage",
-      "Automated reports",
-      "Geospatial maps",
-      "Custom alerts",
-      "Historical data",
-      "API access",
-    ],
-    price: "From KES 999/mo",
-    icon: CloudRain,
-    detailsHref: getProductDetailsHref("7"),
-    websiteHref: getProductWebsiteHref("7", "products-card"),
+    tagline:
+      "Hyperlocal weather intelligence and automated reports for all 47 counties in Kenya.",
+    cover: "/photos/kunanyesha.jpg",
+    coverAlt: "A farmer inspecting crops in the field",
+    href: getProductWebsiteHref("7", "products-card") ?? "/contact",
+    external: Boolean(getProductWebsiteHref("7", "products-card")),
   },
   {
     id: "8",
-    tag: "Commerce",
+    category: "Commerce",
     status: "Coming soon",
     name: "Book & Pay",
-    tagline: "Bookings and payments for service businesses",
-    description:
-      "One platform for appointment scheduling, mobile money, and card payments — built for service businesses in Ghana.",
-    features: [
-      "MTN Mobile Money",
-      "Card payments",
-      "Scheduling",
-      "SMS reminders",
-      "Analytics",
-      "Multi-staff",
-    ],
-    price: "Commission-based",
-    icon: ShoppingBag,
-    detailsHref: getProductDetailsHref("8"),
-    websiteHref: getProductWebsiteHref("8", "products-card"),
+    tagline:
+      "Bookings, mobile money, and card payments in one platform for service businesses in Ghana.",
+    cover: "/photos/bookandpay.jpg",
+    coverAlt: "A service-business owner attending to a customer",
+    href: "/contact",
+    external: false,
   },
 ];
 
-export default function ProductsPage() {
+function ProductCard({ product }: { product: Product }) {
+  const actionLabel =
+    product.status === "Coming soon"
+      ? "Join waitlist"
+      : product.external
+        ? "Visit site"
+        : "Learn more";
+
   return (
-    <div className="bg-[#080808] text-[#f2f2f2] min-h-screen">
+    <Link
+      href={product.href}
+      target={product.external ? "_blank" : undefined}
+      rel={product.external ? "noopener noreferrer" : undefined}
+      className="card-base group flex flex-col h-full overflow-hidden"
+    >
+      <div className="relative overflow-hidden">
+        <Image
+          src={product.cover}
+          alt={product.coverAlt}
+          width={1200}
+          height={800}
+          className="w-full h-44 object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+        />
+        <span
+          className={`absolute top-3 left-3 text-xs font-medium px-2.5 py-0.5 rounded-full ${
+            product.status === "Live"
+              ? "bg-[#e6f4ea] text-[#188038]"
+              : "bg-[#fef7e0] text-[#b06000]"
+          }`}
+        >
+          {product.status}
+        </span>
+      </div>
+      <div className="flex flex-col flex-1 p-6">
+        <p className="text-xs font-medium text-[#1a73e8] mb-2">
+          {product.category}
+        </p>
+        <h3
+          className="text-lg font-medium text-[#202124] mb-2"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          {product.name}
+        </h3>
+        <p className="text-sm text-[#5f6368] leading-relaxed flex-1">
+          {product.tagline}
+        </p>
+        <span className="mt-5 text-sm font-medium text-[#1a73e8] inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-all">
+          {actionLabel}
+          {product.external ? (
+            <ArrowUpRight size={15} />
+          ) : (
+            <ArrowRight size={15} />
+          )}
+        </span>
+      </div>
+    </Link>
+  );
+}
+
+export default function ProductsPage() {
+  const categories = useMemo(
+    () => ["All", ...Array.from(new Set(products.map((p) => p.category)))],
+    [],
+  );
+  const [active, setActive] = useState("All");
+
+  const visible =
+    active === "All" ? products : products.filter((p) => p.category === active);
+
+  return (
+    <div className="bg-white text-[#202124] min-h-screen">
       <Navigation />
 
       {/* Header */}
-      <section className="relative pt-36 pb-16 border-b border-white/[0.06]">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(6,182,212,0.07) 0%, transparent 70%)",
-          }}
-        />
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
+      <section className="pt-36 pb-10">
+        <div className="max-w-7xl mx-auto px-6 lg:px-8 text-center">
           <motion.div variants={stagger} initial="hidden" animate="visible">
             <motion.p
               variants={fadeUp}
-              className="text-xs font-semibold uppercase tracking-[0.15em] text-[#444] mb-5"
+              className="text-sm font-medium text-[#1a73e8] mb-5"
             >
               Products
             </motion.p>
             <motion.h1
               variants={fadeUp}
-              className="text-h1 max-w-2xl mb-5"
+              className="text-h1 max-w-3xl mx-auto mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Products.
-              <br />
-              <span className="gradient-text">Built for real operations.</span>
+              A focused suite for real operations.
             </motion.h1>
-            <motion.p variants={fadeUp} className="text-body-lg max-w-md">
-              Each product solves a specific problem for businesses — with AI
-              where it makes the work better.
+            <motion.p
+              variants={fadeUp}
+              className="text-body-lg max-w-xl mx-auto"
+            >
+              Every product solves one specific problem for businesses. Pick one
+              to see it in action.
             </motion.p>
           </motion.div>
         </div>
       </section>
 
-      {/* Products list */}
-      <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20">
-        <motion.div
-          className="flex flex-col gap-5"
-          variants={stagger}
-          initial="hidden"
-          whileInView="visible"
-          viewport={viewportOnce}
-        >
-          {products.map((product) => {
-            const Icon = product.icon;
-            const primaryHref = product.websiteHref ?? product.detailsHref;
+      {/* Filter + grid */}
+      <section className="max-w-7xl mx-auto px-6 lg:px-8 pb-16">
+        {/* Category filter */}
+        <div className="flex flex-wrap justify-center gap-2.5 mb-12">
+          {categories.map((cat) => {
+            const isActive = cat === active;
             return (
-              <motion.div key={product.id} variants={scaleIn}>
-                <div className="card-base group flex flex-col lg:flex-row gap-6 p-7 lg:p-8">
-                  {/* Left metadata */}
-                  <div className="flex-shrink-0 lg:w-52 flex flex-row lg:flex-col gap-4 lg:gap-3">
-                    <div className="w-10 h-10 rounded-xl bg-[#06b6d4]/10 flex items-center justify-center text-[#06b6d4] group-hover:bg-[#06b6d4]/20 transition-colors">
-                      <Icon size={18} />
-                    </div>
-                    <div>
-                      <div className="flex items-center gap-2 mb-1.5">
-                        <span className="tag-pill text-[10px]">
-                          {product.tag}
-                        </span>
-                        <span
-                          className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${
-                            product.status === "Live"
-                              ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                              : "bg-amber-500/10 text-amber-400 border border-amber-500/20"
-                          }`}
-                        >
-                          {product.status}
-                        </span>
-                      </div>
-                      <h3
-                        className="text-lg font-semibold text-white"
-                        style={{ fontFamily: "var(--font-display)" }}
-                      >
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-[#555] mt-0.5">
-                        {product.tagline}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Middle */}
-                  <div className="flex-1 min-w-0">
-                    <p className="text-sm text-[#666] leading-relaxed mb-5">
-                      {product.description}
-                    </p>
-                    <div className="flex flex-wrap gap-2">
-                      {product.features.map((f) => (
-                        <span
-                          key={f}
-                          className="text-xs px-3 py-1 rounded-md bg-white/[0.04] border border-white/[0.06] text-[#555]"
-                        >
-                          {f}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Right */}
-                  <div className="flex-shrink-0 flex flex-col items-start lg:items-end justify-between gap-4 lg:min-w-[140px]">
-                    <p className="text-sm font-semibold text-white">
-                      {product.price}
-                    </p>
-                    <div className="flex items-center gap-4">
-                      <Link
-                        href={product.detailsHref}
-                        className="text-sm text-[#666] hover:text-white transition-colors"
-                      >
-                        Details
-                      </Link>
-                      <Link
-                        href={primaryHref}
-                        target={product.websiteHref ? "_self" : undefined}
-                        rel={
-                          product.websiteHref
-                            ? "noopener noreferrer"
-                            : undefined
-                        }
-                        className="text-sm font-medium text-[#06b6d4] flex items-center gap-1.5 group-hover:gap-2.5 transition-all"
-                      >
-                        {product.websiteHref ? "View product" : "Get started"}{" "}
-                        <ArrowRight size={14} />
-                      </Link>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
+              <button
+                key={cat}
+                onClick={() => setActive(cat)}
+                aria-pressed={isActive}
+                className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                  isActive
+                    ? "bg-[#1a73e8] text-white"
+                    : "bg-[#f1f3f4] text-[#5f6368] hover:bg-[#e8eaed]"
+                }`}
+              >
+                {cat}
+              </button>
             );
           })}
+        </div>
+
+        {/* Grid */}
+        <motion.div
+          key={active}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+        >
+          {visible.map((product) => (
+            <motion.div key={product.id} variants={fadeUp}>
+              <ProductCard product={product} />
+            </motion.div>
+          ))}
         </motion.div>
       </section>
 
-      {/* Enterprise — premium CTA */}
-      <section className="relative py-24">
-        <div
-          className="absolute inset-0 pointer-events-none"
-          aria-hidden
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 40% at 10% 20%, rgba(6,182,212,0.06) 0%, transparent 25%), linear-gradient(90deg, rgba(2,16,17,0.6), rgba(6,16,18,0.55))",
-          }}
-        />
+      {/* Closing CTA */}
+      <section className="px-6 lg:px-8 py-14 pb-24">
+        <div className="max-w-7xl mx-auto bg-[#f8f9fa] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8">
+          <div className="flex-1 text-center lg:text-left">
+            <h3
+              className="text-3xl lg:text-4xl font-medium text-[#202124] mb-3"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              Not sure which one fits?
+            </h3>
+            <p className="text-lg text-[#5f6368] max-w-2xl mx-auto lg:mx-0">
+              Tell us about your operations and we&apos;ll recommend the right
+              product and rollout approach.
+            </p>
+          </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
-          <div className="mx-auto bg-white/5 backdrop-blur-md border border-white/[0.06] rounded-2xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8 shadow-2xl">
-            <div className="flex-1 text-center lg:text-left">
-              <h3
-                className="text-3xl lg:text-4xl font-semibold text-white mb-3"
-                style={{ fontFamily: "var(--font-display)" }}
-              >
-                Enterprise-grade support & integrations
-              </h3>
-              <p className="text-lg text-[#d6d6d6] max-w-2xl mx-auto lg:mx-0 mb-6">
-                Plan multi-team rollouts with SSO, SLAs, security reviews, and
-                bespoke integrations. We partner with operations teams to
-                deliver reliable, auditable deployments at scale.
-              </p>
-
-              <ul className="flex flex-col sm:flex-row gap-4 sm:gap-8 justify-center lg:justify-start text-sm text-[#bfbfbf]">
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
-                  Dedicated success manager
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
-                  Security & compliance (SSO, audit logs)
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 rounded-full bg-[#06b6d4]" />
-                  Custom onboarding & training
-                </li>
-              </ul>
-            </div>
-
-            <div className="flex flex-col items-center lg:items-end gap-4">
-              <Link
-                href="/enterprise#contact"
-                className="inline-flex items-center gap-3 px-6 py-3 rounded-md bg-gradient-to-r from-[#06b6d4] to-[#22d3ee] text-[#080808] font-semibold transition-colors"
-              >
-                Book consultation <ArrowRight size={16} />
-              </Link>
-
-              <Link
-                href="/contact"
-                className="text-sm text-[#cfcfcf] hover:text-white"
-              >
-                Contact sales
-              </Link>
-            </div>
+          <div className="flex flex-col items-center lg:items-end gap-3">
+            <Link
+              href="/contact"
+              className="btn-pill btn-primary px-6 py-3 text-sm"
+            >
+              Talk to us <ArrowRight size={16} />
+            </Link>
+            <p className="text-xs text-[#80868b]">
+              We respond within one business day.
+            </p>
           </div>
         </div>
       </section>

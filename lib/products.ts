@@ -5,15 +5,15 @@ type ProductLink = {
 
 const productLinks: Record<string, ProductLink> = {
   "1": {
-    detailsHref: "/products/1",
+    detailsHref: "/products",
     websiteHref: process.env.NEXT_PUBLIC_LUDALENS_SITE_URL,
   },
   "7": {
-    detailsHref: "/products/7",
+    detailsHref: "/products",
     websiteHref: "https://kunanyesha.archomak.com/",
   },
   "8": {
-    detailsHref: "/products/8",
+    detailsHref: "/products",
     websiteHref: "https://www.bookandpaygh.com",
   },
 };
