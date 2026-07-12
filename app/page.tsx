@@ -20,11 +20,10 @@ const products = [
     name: "Kunanyesha",
     description:
       "Real-time county-level weather data and automated reporting for all 47 counties in Kenya.",
-    price: "From KES 999/mo",
     icon: CloudRain,
     iconBg: "#e8f0fe",
     iconColor: "#1a73e8",
-    illustration: "/photos/kunanyesha.jpg",
+    illustration: "/photos/kunanyesha.png",
     illustrationAlt:
       "A farmer inspecting crops in the field, the setting Kunanyesha serves",
     detailsHref: getProductDetailsHref("7"),
@@ -36,12 +35,11 @@ const products = [
     tagClass: "tag-pill",
     name: "Book & Pay",
     description:
-      "Unified bookings, mobile money, and card payment platform for service businesses in Ghana.",
-    price: "Commission-based",
+      "Bookings, mobile money, and card payments in one platform for service businesses in Ghana.",
     icon: ShoppingBag,
     iconBg: "#e8f0fe",
     iconColor: "#1a73e8",
-    illustration: "/photos/bookandpay.jpg",
+    illustration: "/photos/sikakoraa.png",
     illustrationAlt:
       "A service-business owner attending to a customer who is on their phone",
     detailsHref: getProductDetailsHref("8"),
@@ -51,16 +49,16 @@ const products = [
 
 const principles = [
   {
-    label: "Solve real problems",
-    body: "We build for the operational realities of modern businesses: unreliable infrastructure, fragmented payments, and low connectivity.",
+    label: "Problem first",
+    body: "Every product starts with a specific job to be done, not a technology looking for a use.",
   },
   {
     label: "AI when it works",
-    body: "We apply AI and automation where they improve speed, accuracy, and cost efficiency for teams on the ground.",
+    body: "We reach for AI and automation only where they clearly beat the simpler option.",
   },
   {
     label: "Shipped, not pitched",
-    body: "Our products are live, used, and evolving based on real feedback from real users.",
+    body: "We would rather put a working product in the field than present a roadmap.",
   },
 ];
 
@@ -83,7 +81,7 @@ export default function HomePage() {
             >
               Our mission is to build practical products that{" "}
               <span className="text-[#1a73e8]">solve real problems</span> for
-              businesses everywhere.
+              businesses.
             </motion.h1>
 
             <motion.p
@@ -92,8 +90,9 @@ export default function HomePage() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
               className="text-lg sm:text-xl text-[#5f6368] max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed"
             >
-              We design and ship digital products for businesses. Built for
-              resilience. Designed for scale.
+              We design and ship software for businesses working with
+              unreliable infrastructure, thin connectivity, and fragmented
+              payments. Built to run in the field, not just the demo.
             </motion.p>
 
             <motion.div
@@ -112,7 +111,7 @@ export default function HomePage() {
                 href="/contact"
                 className="btn-pill btn-secondary px-8 py-3.5 text-sm"
               >
-                Get in Touch
+                Talk to us
               </Link>
             </motion.div>
           </div>
@@ -125,10 +124,10 @@ export default function HomePage() {
             className="rounded-3xl overflow-hidden"
           >
             <Image
-              src="/photos/hero-3d.jpg"
-              alt="A 3D illustration of business growth: a rising results chart surrounded by product, launch, and partnership icons"
-              width={1200}
-              height={1040}
+              src="/photos/hero.jpg"
+              alt="A team collaborating on laptops in a modern office"
+              width={2000}
+              height={1335}
               priority
               className="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover"
             />
@@ -146,11 +145,11 @@ export default function HomePage() {
           className="text-center mb-14"
         >
           <motion.h2 variants={fadeUp} className="text-h2 mb-4">
-            Focused products. One clear mission.
+            Our products.
           </motion.h2>
           <motion.p variants={fadeUp} className="text-body-lg max-w-xl mx-auto">
-            Each product solves a specific problem. We use AI where it makes the
-            work better.
+            Software for businesses, from weather intelligence to bookings and
+            payments.
           </motion.p>
         </motion.div>
 
@@ -196,10 +195,7 @@ export default function HomePage() {
                     <p className="text-sm text-[#5f6368] leading-relaxed flex-1">
                       {product.description}
                     </p>
-                    <div className="mt-6 pt-5 border-t border-[#e8eaed] flex items-center justify-between">
-                      <span className="text-xs text-[#80868b]">
-                        {product.price}
-                      </span>
+                    <div className="mt-6 pt-5 border-t border-[#e8eaed] flex items-center justify-end">
                       <div className="flex items-center gap-4">
                         <Link
                           href={product.detailsHref}
@@ -248,24 +244,22 @@ export default function HomePage() {
                 className="text-2xl md:text-3xl font-medium leading-snug text-[#202124] mb-6"
                 style={{ fontFamily: "var(--font-display)" }}
               >
-                “We build for outcomes first.{" "}
+                “Start with the problem, not the technology.{" "}
                 <span className="text-[#1a73e8]">
-                  Technology follows the problem.
+                  If a simpler tool does the job, we ship it.
                 </span>
                 ”
               </blockquote>
               <p className="text-sm text-[#5f6368]">
                 Lucky Archibong, Founder, Archomak
               </p>
-              <div className="mt-10 rounded-2xl bg-white border border-[#e8eaed] p-6">
-                <Image
-                  src="/illustrations/philosophy.svg"
-                  alt="Illustration of a person presenting rising business results"
-                  width={960}
-                  height={960}
-                  className="w-full h-64 object-contain"
-                />
-              </div>
+              <Image
+                src="/illustrations/philosophy.svg"
+                alt="Illustration of a person presenting rising business results"
+                width={960}
+                height={960}
+                className="mt-8 w-full max-w-md h-72 object-contain"
+              />
             </motion.div>
 
             <motion.div
@@ -373,7 +367,7 @@ export default function HomePage() {
             viewport={viewportOnce}
             className="text-sm font-medium text-[#1a73e8] mb-5"
           >
-            Let&apos;s work together
+            Get in touch
           </motion.p>
           <motion.h2
             variants={fadeUp}
@@ -382,8 +376,8 @@ export default function HomePage() {
             viewport={viewportOnce}
             className="text-h1 max-w-2xl mb-10"
           >
-            Ready to solve a{" "}
-            <span className="text-[#1a73e8]">real problem?</span>
+            Let&apos;s talk about your{" "}
+            <span className="text-[#1a73e8]">operations.</span>
           </motion.h2>
           <motion.div
             variants={fadeUp}
@@ -396,7 +390,7 @@ export default function HomePage() {
               href="/contact"
               className="btn-pill btn-primary px-8 py-4 text-base"
             >
-              Tell us what you&apos;re working on
+              Talk to us
               <ArrowRight size={18} />
             </Link>
             <p className="text-sm text-[#5f6368]">

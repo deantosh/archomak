@@ -29,9 +29,10 @@ const products: Product[] = [
     status: "Live",
     name: "Kunanyesha",
     tagline:
-      "Hyperlocal weather intelligence and automated reports for all 47 counties in Kenya.",
-    cover: "/photos/kunanyesha.jpg",
-    coverAlt: "A farmer inspecting crops in the field",
+      "Plan around the weather instead of reacting to it. County-level forecasts and automated weekly reports for all 47 counties in Kenya.",
+    cover: "/photos/kunanyesha.png",
+    coverAlt:
+      "Illustration of people and businesses staying ahead of the weather with Kunanyesha",
     href: getProductWebsiteHref("7", "products-card") ?? "/contact",
     external: Boolean(getProductWebsiteHref("7", "products-card")),
   },
@@ -41,9 +42,10 @@ const products: Product[] = [
     status: "Coming soon",
     name: "Book & Pay",
     tagline:
-      "Bookings, mobile money, and card payments in one platform for service businesses in Ghana.",
-    cover: "/photos/bookandpay.jpg",
-    coverAlt: "A service-business owner attending to a customer",
+      "Get booked and get paid in one place. Scheduling, mobile money, and card payments for service businesses in Ghana, with reminders that cut no-shows.",
+    cover: "/photos/sikakoraa.png",
+    coverAlt:
+      "Illustration of a service business taking bookings and payments with Book & Pay",
     href: "/contact",
     external: false,
   },
@@ -52,7 +54,7 @@ const products: Product[] = [
 function ProductCard({ product }: { product: Product }) {
   const actionLabel =
     product.status === "Coming soon"
-      ? "Join waitlist"
+      ? "Join the waitlist"
       : product.external
         ? "Visit site"
         : "Learn more";
@@ -137,14 +139,13 @@ export default function ProductsPage() {
               className="text-h1 max-w-3xl mx-auto mb-5"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              A focused suite for real operations.
+              Products for operations teams.
             </motion.h1>
             <motion.p
               variants={fadeUp}
-              className="text-body-lg max-w-xl mx-auto"
+              className="text-body-lg max-w-2xl mx-auto"
             >
-              Every product solves one specific problem for businesses. Pick one
-              to see it in action.
+              Pick one to see how it works.
             </motion.p>
           </motion.div>
         </div>
@@ -189,9 +190,10 @@ export default function ProductsPage() {
         </motion.div>
       </section>
 
+
       {/* Closing CTA */}
       <section className="px-6 lg:px-8 py-14 pb-24">
-        <div className="max-w-7xl mx-auto bg-[#f8f9fa] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8">
+        <div className="max-w-7xl mx-auto bg-[#e8f0fe] rounded-3xl p-8 lg:p-12 flex flex-col lg:flex-row items-center gap-8">
           <div className="flex-1 text-center lg:text-left">
             <h3
               className="text-3xl lg:text-4xl font-medium text-[#202124] mb-3"
@@ -200,8 +202,8 @@ export default function ProductsPage() {
               Not sure which one fits?
             </h3>
             <p className="text-lg text-[#5f6368] max-w-2xl mx-auto lg:mx-0">
-              Tell us about your operations and we&apos;ll recommend the right
-              product and rollout approach.
+              Tell us about your operations and we will recommend the right
+              product and a rollout plan that fits your team.
             </p>
           </div>
 

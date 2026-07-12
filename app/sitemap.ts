@@ -12,6 +12,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/stories",
     "/contact",
     ...stories.map((s) => `/stories/${s.slug}`),
+    "/privacy",
+    "/terms",
   ];
 
   return routes.map((route) => ({

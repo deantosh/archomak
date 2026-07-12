@@ -23,11 +23,11 @@ const contactInfo = [
 ];
 
 const socials = [
-  { icon: Twitter, label: "X", href: "https://x.com/archomak" },
+  { icon: Twitter, label: "X", href: "https://x.com/archomak.tech" },
   {
     icon: Linkedin,
     label: "LinkedIn",
-    href: "https://linkedin.com/company/archomak",
+    href: "https://ke.linkedin.com/company/archomak",
   },
 ];
 

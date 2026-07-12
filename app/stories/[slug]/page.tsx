@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import Image from "next/image";
 import { notFound } from "next/navigation";
@@ -6,8 +7,41 @@ import Navigation from "@/components/navigation";
 import Footer from "@/components/footer";
 import { stories, getStory, formatStoryDate } from "@/lib/stories";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
+
 export function generateStaticParams() {
   return stories.map((s) => ({ slug: s.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const story = getStory(slug);
+  if (!story) return {};
+
+  const url = `${siteUrl}/stories/${story.slug}`;
+  return {
+    title: story.title,
+    description: story.excerpt,
+    alternates: { canonical: `/stories/${story.slug}` },
+    openGraph: {
+      type: "article",
+      url,
+      title: story.title,
+      description: story.excerpt,
+      publishedTime: story.date,
+      images: [{ url: story.cover, alt: story.coverAlt }],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: story.title,
+      description: story.excerpt,
+      images: [story.cover],
+    },
+  };
 }
 
 export default async function StoryPage({
@@ -21,8 +55,57 @@ export default async function StoryPage({
 
   const more = stories.filter((s) => s.slug !== story.slug).slice(0, 3);
 
+  const articleJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: story.title,
+    description: story.excerpt,
+    image: `${siteUrl}${story.cover}`,
+    datePublished: story.date,
+    dateModified: story.date,
+    articleSection: story.category,
+    author: { "@type": "Organization", name: "Archomak" },
+    publisher: {
+      "@type": "Organization",
+      name: "Archomak",
+      logo: {
+        "@type": "ImageObject",
+        url: `${siteUrl}/logo/favico.png`,
+      },
+    },
+    mainEntityOfPage: `${siteUrl}/stories/${story.slug}`,
+  };
+
+  const breadcrumb = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Stories",
+        item: `${siteUrl}/stories`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: story.title,
+        item: `${siteUrl}/stories/${story.slug}`,
+      },
+    ],
+  };
+
   return (
     <div className="bg-white text-[#202124] min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumb) }}
+      />
       <Navigation />
 
       <article className="pt-36 pb-16">

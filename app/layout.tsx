@@ -19,9 +19,9 @@ const outfit = Outfit({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
-const defaultTitle = "Archomak | Digital Products for Businesses and the World";
+const defaultTitle = "Archomak | Practical software for real operations";
 const defaultDescription =
-  "Archomak builds practical digital products for businesses and operations teams worldwide, using AI where it creates measurable value.";
+  "Archomak builds practical software for businesses, designed to work where infrastructure is unreliable, connectivity is thin, and payments are fragmented.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -65,10 +65,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/logo/logo.png",
-        width: 1200,
-        height: 630,
-        alt: "Archomak logo",
+        url: "/photos/hero.jpg",
+        width: 2000,
+        height: 1335,
+        alt: "Archomak builds practical software for businesses",
       },
     ],
   },
@@ -76,7 +76,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/logo/logo.png"],
+    images: ["/photos/hero.jpg"],
   },
   category: "technology",
   icons: {
@@ -98,6 +98,21 @@ export default function RootLayout({
     url: siteUrl,
     logo: `${siteUrl}/logo/favico.png`,
     description: defaultDescription,
+    email: "hello@archomak.com",
+    founder: [
+      { "@type": "Person", name: "Lucky Archibong" },
+      { "@type": "Person", name: "Deantosh Daiddoh" },
+    ],
+    areaServed: ["Kenya", "Ghana"],
+    contactPoint: {
+      "@type": "ContactPoint",
+      email: "hello@archomak.com",
+      contactType: "customer support",
+    },
+    sameAs: [
+      "https://x.com/archomak.tech",
+      "https://ke.linkedin.com/company/archomak",
+    ],
   };
 
   const websiteJsonLd = {
@@ -107,6 +122,7 @@ export default function RootLayout({
     url: siteUrl,
     description: defaultDescription,
     inLanguage: "en-US",
+    publisher: { "@type": "Organization", name: "Archomak" },
   };
 
   return (
