@@ -79,9 +79,10 @@ export default function HomePage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-[1.15]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Our mission is to build practical products that{" "}
-              <span className="text-[#1a73e8]">solve real problems</span> for
-              businesses.
+              Software built for the{" "}
+              <span className="text-[#1a73e8]">
+                realities of African business.
+              </span>
             </motion.h1>
 
             <motion.p
@@ -90,9 +91,10 @@ export default function HomePage() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
               className="text-lg sm:text-xl text-[#5f6368] max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed"
             >
-              We design and ship software for businesses working with
-              unreliable infrastructure, thin connectivity, and fragmented
-              payments. Built to run in the field, not just the demo.
+              Archomak builds products that help businesses and institutions
+              operate more efficiently in environments shaped by unreliable
+              infrastructure, fragmented payments, and limited connectivity.
+              Designed to perform where the work actually happens.
             </motion.p>
 
             <motion.div
@@ -107,6 +109,7 @@ export default function HomePage() {
               >
                 Explore Products
               </Link>
+
               <Link
                 href="/contact"
                 className="btn-pill btn-secondary px-8 py-3.5 text-sm"
