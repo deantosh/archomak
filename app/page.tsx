@@ -245,9 +245,6 @@ export default function HomePage() {
                 </span>
                 ”
               </blockquote>
-              <p className="text-sm text-[#5f6368]">
-                Lucky Archibong, Founder, Archomak
-              </p>
             </motion.div>
 
             <motion.div
