@@ -79,10 +79,8 @@ export default function HomePage() {
               className="text-4xl sm:text-5xl lg:text-6xl font-medium tracking-tight mb-6 leading-[1.15]"
               style={{ fontFamily: "var(--font-display)" }}
             >
-              Software built for the{" "}
-              <span className="text-[#1a73e8]">
-                realities of African business.
-              </span>
+              Software to{" "}
+              <span className="text-[#1a73e8]">simplify daily operations.</span>
             </motion.h1>
 
             <motion.p
@@ -91,10 +89,8 @@ export default function HomePage() {
               transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
               className="text-lg sm:text-xl text-[#5f6368] max-w-xl mx-auto lg:mx-0 mb-9 leading-relaxed"
             >
-              Archomak builds products that help businesses and institutions
-              operate more efficiently in environments shaped by unreliable
-              infrastructure, fragmented payments, and limited connectivity.
-              Designed to perform where the work actually happens.
+              practical software solutions that help businesses solve
+              operational problems.
             </motion.p>
 
             <motion.div
@@ -132,7 +128,7 @@ export default function HomePage() {
               width={2000}
               height={1335}
               priority
-              className="w-full h-[300px] sm:h-[420px] lg:h-[520px] object-cover"
+              className="w-full h-75 sm:h-105 lg:h-130 object-cover"
             />
           </motion.div>
         </div>
@@ -148,12 +144,8 @@ export default function HomePage() {
           className="text-center mb-14"
         >
           <motion.h2 variants={fadeUp} className="text-h2 mb-4">
-            Our products.
+            softwares we are building to help operations.
           </motion.h2>
-          <motion.p variants={fadeUp} className="text-body-lg max-w-xl mx-auto">
-            Software for businesses, from weather intelligence to bookings and
-            payments.
-          </motion.p>
         </motion.div>
 
         <motion.div
@@ -256,13 +248,6 @@ export default function HomePage() {
               <p className="text-sm text-[#5f6368]">
                 Lucky Archibong, Founder, Archomak
               </p>
-              <Image
-                src="/illustrations/philosophy.svg"
-                alt="Illustration of a person presenting rising business results"
-                width={960}
-                height={960}
-                className="mt-8 w-full max-w-md h-72 object-contain"
-              />
             </motion.div>
 
             <motion.div
@@ -304,7 +289,7 @@ export default function HomePage() {
           </div>
           <Link
             href="/stories"
-            className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-[#1a73e8] hover:gap-2.5 transition-all flex-shrink-0"
+            className="hidden sm:inline-flex items-center gap-1.5 text-sm font-medium text-[#1a73e8] hover:gap-2.5 transition-all shrink-0"
           >
             All stories <ArrowRight size={15} />
           </Link>
@@ -358,49 +343,6 @@ export default function HomePage() {
         >
           All stories <ArrowRight size={15} />
         </Link>
-      </section>
-
-      {/* ── FINAL CTA ──────────────────────────────────────────────────── */}
-      <section className="px-6 lg:px-8 py-24">
-        <div className="max-w-7xl mx-auto bg-[#e8f0fe] rounded-3xl py-24 px-6 flex flex-col items-center text-center">
-          <motion.p
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="text-sm font-medium text-[#1a73e8] mb-5"
-          >
-            Get in touch
-          </motion.p>
-          <motion.h2
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="text-h1 max-w-2xl mb-10"
-          >
-            Let&apos;s talk about your{" "}
-            <span className="text-[#1a73e8]">operations.</span>
-          </motion.h2>
-          <motion.div
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={viewportOnce}
-            className="flex flex-col items-center gap-4"
-          >
-            <Link
-              href="/contact"
-              className="btn-pill btn-primary px-8 py-4 text-base"
-            >
-              Talk to us
-              <ArrowRight size={18} />
-            </Link>
-            <p className="text-sm text-[#5f6368]">
-              We respond within one business day.
-            </p>
-          </motion.div>
-        </div>
       </section>
 
       <Footer />

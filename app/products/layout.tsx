@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
 
 const description =
-  "The products we have built so far: Kunanyesha for weather-driven operations in Kenya, and Book & Pay for bookings and payments in Ghana.";
+  "The products we are building now: Kunanyesha for smarter planning and Book & Pay for simpler bookings and payments.";
 
 export const metadata: Metadata = {
   title: "Products",
@@ -53,7 +53,7 @@ export default function ProductsLayout({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           description:
-            "County-level weather forecasts and automated reports for all 47 counties in Kenya.",
+            "Weather-aware planning and automated reporting for teams that need better visibility.",
           url: "https://kunanyesha.archomak.com/",
         },
       },
@@ -66,7 +66,7 @@ export default function ProductsLayout({
           applicationCategory: "BusinessApplication",
           operatingSystem: "Web",
           description:
-            "Scheduling, mobile money, and card payments for service businesses in Ghana.",
+            "Scheduling, reminders, and payments for service businesses that need fewer tools and less friction.",
           url: `${siteUrl}/products`,
         },
       },

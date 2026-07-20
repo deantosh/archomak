@@ -19,10 +19,9 @@ const outfit = Outfit({
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
-const defaultTitle = "Archomak | Practical software for real operations";
+const defaultTitle = "Archomak | Building focused software products.";
 const defaultDescription =
-  "Archomak builds practical software for businesses, designed to work where infrastructure is unreliable, connectivity is thin, and payments are fragmented.";
-
+  "Archomak is a product company building focused software products for teams solving practical problems with clarity and care.";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -33,11 +32,15 @@ export const metadata: Metadata = {
   applicationName: "Archomak",
   keywords: [
     "Archomak",
-    "digital products",
-    "workflow automation",
-    "weather reporting",
-    "bookings and payments",
     "product company",
+    "software products",
+    "product studio",
+    "software development",
+    "software engineering",
+    "weather intelligence",
+    "service commerce",
+    "artificial intelligence",
+    "workflow automation",
   ],
   authors: [{ name: "Archomak" }],
   creator: "Archomak",
@@ -68,7 +71,7 @@ export const metadata: Metadata = {
         url: "/photos/hero.jpg",
         width: 2000,
         height: 1335,
-        alt: "Archomak builds practical software for businesses",
+        alt: "Archomak building technology products",
       },
     ],
   },
@@ -103,7 +106,6 @@ export default function RootLayout({
       { "@type": "Person", name: "Lucky Archibong" },
       { "@type": "Person", name: "Deantosh Daiddoh" },
     ],
-    areaServed: ["Kenya", "Ghana"],
     contactPoint: {
       "@type": "ContactPoint",
       email: "hello@archomak.com",
@@ -111,7 +113,7 @@ export default function RootLayout({
     },
     sameAs: [
       "https://x.com/archomak.tech",
-      "https://ke.linkedin.com/company/archomak",
+      "https://www.linkedin.com/company/archomak",
     ],
   };
 

@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
 
 const description =
-  "Notes from the work at Archomak: how we think about the products we build, the markets we serve, and the decisions behind them.";
+  "Notes from the work at Archomak: how we think about the products we build, the problems we choose to solve, and the decisions behind them.";
 
 export const metadata: Metadata = {
   title: "Stories",

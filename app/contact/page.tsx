@@ -66,9 +66,7 @@ export default function ContactPage() {
             viewport={viewportOnce}
           >
             <p className="text-sm text-[#5f6368] leading-relaxed mb-10 max-w-sm">
-              Share the problem you&apos;re solving and your goals. We&apos;ll
-              help you choose the right product path, rollout approach, or next
-              implementation step.
+              Share Your thoughts, ideas, or inquiries with us. We&apos;re here to listen.
             </p>
             <div className="flex flex-col gap-6 mb-10">
               {contactInfo.map((item) => {

@@ -14,17 +14,17 @@ export const stories: Story[] = [
   {
     slug: "weather-data-for-47-counties",
     category: "Product",
-    title: "Weather data for all 47 counties, in one weekly report",
+    title: "Weather data in one weekly report",
     excerpt:
-      "How Kunanyesha turns fragmented, hard-to-reach weather data into a single report that operations teams can act on every Monday morning.",
+      "How Kunanyesha turns fragmented weather signals into a single report that operations teams can act on every week.",
     cover: "/photos/kunanyesha.jpg",
-    coverAlt: "A farmer inspecting crops in the field",
+    coverAlt: "A team reviewing weather information at a desk",
     date: "2026-06-24",
     readingTime: "4 min read",
     body: [
-      "For most operations teams in Kenya, weather information already exists. It is just scattered, inconsistent, and rarely arrives in a form anyone can act on. A logistics planner might check one forecast, an agronomist another, and a county officer a third, each with different assumptions and coverage.",
-      "Kunanyesha was built to close that gap. It consolidates real-time and forecast data across all 47 counties into a single, consistent source, then packages it into an automated weekly report delivered every Monday morning.",
-      "The goal is not more data. It is fewer decisions made blind. When a team can see county-level rainfall trends alongside their own operational zones, planning shifts from reactive to deliberate.",
+      "For most operations teams, weather information already exists. It is just scattered, inconsistent, and rarely arrives in a form anyone can act on. A planner might check one forecast, a field lead another, and a team manager a third, each with different assumptions and coverage.",
+      "Kunanyesha was built to close that gap. It consolidates real-time and forecast data into a single, consistent source, then packages it into an automated weekly report delivered at the start of the week.",
+      "The goal is not more data. It is fewer decisions made blind. When a team can see weather trends alongside its own operating context, planning shifts from reactive to deliberate.",
       "We are continuing to expand historical coverage and alerting so teams can move from weekly planning to real-time response, without adding headcount to watch the weather.",
     ],
   },
@@ -35,14 +35,14 @@ export const stories: Story[] = [
     excerpt:
       "Service businesses were stitching together three tools to do one job. Book & Pay collapses scheduling, mobile money, and card payments into a single flow.",
     cover: "/photos/bookandpay.jpg",
-    coverAlt: "A service-business owner attending to a customer",
+    coverAlt: "A service-business owner managing appointments and payments",
     date: "2026-06-03",
     readingTime: "5 min read",
     body: [
-      "A salon owner in Accra should not need a developer, three subscriptions, and a spreadsheet to take a booking and get paid. Yet that is exactly what most service businesses end up with: a scheduling app, a payment link, and a separate reminder tool that never quite talk to each other.",
-      "Book & Pay was designed around a single flow: a customer books, pays with mobile money or card, and receives an automatic reminder. It all happens in one place, with no integration work required from the business.",
+      "A small service business should not need a developer, three subscriptions, and a spreadsheet to take a booking and get paid. Yet that is exactly what many teams end up with: a scheduling app, a payment link, and a separate reminder tool that never quite talk to each other.",
+      "Book & Pay was designed around a single flow: a customer books, pays, and receives an automatic reminder. It all happens in one place, with no integration work required from the business.",
       "Bringing these together is not only a convenience. Reminders sent from the same system that holds the booking are the ones that actually reduce no-shows, because they carry the real appointment details.",
-      "We are currently in beta with service businesses across Ghana, refining the product against real bookings before a wider launch.",
+      "We are continuing to refine the experience with real teams so the product stays simple and useful as it grows.",
     ],
   },
   {
@@ -67,7 +67,7 @@ export const stories: Story[] = [
     category: "Engineering",
     title: "Designing for unreliable infrastructure",
     excerpt:
-      "Low connectivity, intermittent power, and fragmented payment rails are not edge cases in the markets we serve. They are the baseline we design for.",
+      "Low connectivity, intermittent power, and fragmented payment rails are not edge cases in the environments we build for. They are the baseline we design for.",
     cover: "/photos/story-data.jpg",
     coverAlt: "A team working at their desks in an office",
     date: "2026-04-28",

@@ -34,8 +34,8 @@ export default function StoriesPage() {
               Notes from the work.
             </motion.h1>
             <motion.p variants={fadeUp} className="text-body-lg max-w-xl">
-              How we think about the products we build, the markets we serve,
-              and the decisions behind them.
+              How we think about the products we build, the problems we choose
+              to solve, and the decisions behind them.
             </motion.p>
           </motion.div>
         </div>
