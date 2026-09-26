@@ -33,7 +33,7 @@ const sections = [
   },
   {
     heading: "Your choices",
-    body: "To access or delete information you have sent us, email hello@archomak.com and we will take care of it.",
+    body: "To access or delete information you have sent us, email admin@archomak.com and we will take care of it.",
   },
   {
     heading: "Changes",
@@ -82,10 +82,10 @@ export default function PrivacyPage() {
           <p className="text-base text-[#5f6368] leading-relaxed mt-10">
             Questions about your data? Email{" "}
             <a
-              href="mailto:hello@archomak.com"
+              href="mailto:admin@archomak.com"
               className="text-[#1a73e8] hover:underline"
             >
-              hello@archomak.com
+              admin@archomak.com
             </a>
             .
           </p>

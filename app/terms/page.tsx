@@ -80,10 +80,10 @@ export default function TermsPage() {
           <p className="text-base text-[#5f6368] leading-relaxed mt-10">
             Questions? Email{" "}
             <a
-              href="mailto:hello@archomak.com"
+              href="mailto:admin@archomak.com"
               className="text-[#1a73e8] hover:underline"
             >
-              hello@archomak.com
+              admin@archomak.com
             </a>
             .
           </p>

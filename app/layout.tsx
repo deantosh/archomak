@@ -101,14 +101,14 @@ export default function RootLayout({
     url: siteUrl,
     logo: `${siteUrl}/logo/favico.png`,
     description: defaultDescription,
-    email: "hello@archomak.com",
+    email: "admin@archomak.com",
     founder: [
       { "@type": "Person", name: "Lucky Archibong" },
       { "@type": "Person", name: "Deantosh Daiddoh" },
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "hello@archomak.com",
+      email: "admin@archomak.com",
       contactType: "customer support",
     },
     sameAs: [
