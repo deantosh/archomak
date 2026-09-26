@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { Send, CheckCircle } from "lucide-react";
+import { Send, CheckCircle, AlertCircle } from "lucide-react";
 
 const schema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -23,6 +23,7 @@ export default function ContactForm({
 }) {
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   const {
     register,
@@ -32,13 +33,17 @@ export default function ContactForm({
 
   const onSubmit = async (data: FormData) => {
     setLoading(true);
+    setFailed(false);
     try {
-      await fetch("/api/contact", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
+      if (!res.ok) throw new Error("Request failed");
       setSent(true);
+    } catch {
+      setFailed(true);
     } finally {
       setLoading(false);
     }
@@ -117,6 +122,12 @@ export default function ContactForm({
           <p className="text-xs text-[#d93025] mt-1">{errors.message.message}</p>
         )}
       </div>
+      {failed && (
+        <p className="flex items-center gap-2 text-xs text-[#d93025]">
+          <AlertCircle size={14} />
+          Something went wrong sending your message. Please try again or email us directly.
+        </p>
+      )}
       <button
         type="submit"
         disabled={loading}
