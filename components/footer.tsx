@@ -1,128 +1,82 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Linkedin, Twitter } from "lucide-react";
+import { products } from "@/lib/products";
+
+const columns = [
+  {
+    title: "Products",
+    links: [
+      ...products.map((p) => ({
+        name: p.name,
+        href: `/products/${p.slug}`,
+        external: false,
+      })),
+      { name: "All products", href: "/products", external: false },
+    ],
+  },
+  {
+    title: "Company",
+    links: [
+      { name: "About", href: "/company", external: false },
+      { name: "News", href: "/news", external: false },
+      { name: "Contact", href: "/contact", external: false },
+    ],
+  },
+  {
+    title: "Follow",
+    links: [
+      { name: "LinkedIn", href: "https://ke.linkedin.com/company/archomak", external: true },
+      { name: "X", href: "https://x.com/archomak.tech", external: true },
+    ],
+  },
+];
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-[#dadce0] bg-[#f8f9fa]">
-      <style>{`
-        .footer-link { transition: color 0.2s ease; }
-        .footer-link:hover { color: #202124; text-decoration: underline; }
-        .footer-social { transition: background-color 0.2s ease; }
-        .footer-social:hover { background-color: #e8f0fe; }
-      `}</style>
-      <div className="max-w-7xl mx-auto px-6 lg:px-8 py-16">
-        {/* Main Footer Content */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-          {/* Brand */}
-          <div>
-            <div className="flex items-center gap-3 mb-5">
-              <Image
-                src="/logo/wordmark.png"
-                alt="Archomak logo"
-                width={413}
-                height={51}
-                className="h-9 w-auto object-contain"
-              />
+    <footer className="border-t border-[var(--line)]">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-10">
+          <div className="col-span-2 md:col-span-1">
+            <Image
+              src="/logo/wordmark.png"
+              alt="Archomak"
+              width={413}
+              height={51}
+              className="h-4 w-auto object-contain"
+            />
+          </div>
+          {columns.map((col) => (
+            <div key={col.title}>
+              <h2 className="text-sm font-medium text-[var(--ink)] mb-4">
+                {col.title}
+              </h2>
+              <ul className="space-y-3">
+                {col.links.map((link) => (
+                  <li key={link.name}>
+                    <Link
+                      href={link.href}
+                      target={link.external ? "_blank" : undefined}
+                      rel={link.external ? "noopener me" : undefined}
+                      className="text-sm text-[var(--ink-2)] hover:text-[var(--ink)] transition-colors"
+                    >
+                      {link.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <div className="flex gap-3">
-              <a
-                className="footer-social p-2.5 rounded-full bg-white border border-[#dadce0]"
-                href="https://x.com/archomak.tech"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X"
-              >
-                <Twitter size={18} className="text-[#5f6368]" />
-              </a>
-              <a
-                className="footer-social p-2.5 rounded-full bg-white border border-[#dadce0]"
-                href="https://ke.linkedin.com/company/archomak"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-              >
-                <Linkedin size={18} className="text-[#5f6368]" />
-              </a>
-            </div>
-          </div>
-
-          {/* Products */}
-          <div>
-            <h3 className="text-sm font-medium text-[#202124] mb-4">Products</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/products"
-                  className="footer-link text-sm text-[#5f6368]"
-                >
-                  Kunanyesha
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/products"
-                  className="footer-link text-sm text-[#5f6368]"
-                >
-                  Book &amp; Pay
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="text-sm font-medium text-[#202124] mb-4">Company</h3>
-            <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/stories"
-                  className="footer-link text-sm text-[#5f6368]"
-                >
-                  Stories
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/contact"
-                  className="footer-link text-sm text-[#5f6368]"
-                >
-                  Contact
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Why Archomak */}
-          <div>
-            <h3 className="text-sm font-medium text-[#202124] mb-4">
-              Why Archomak
-            </h3>
-            <p className="text-sm text-[#5f6368] leading-relaxed">
-              We ship what we build and improve it from how it runs in the
-              field, not from slideware.
-            </p>
-            <p className="text-xs text-[#80868b] mt-3">
-              Founded by Lucky Archibong &amp; Deantosh Daiddoh
-            </p>
-          </div>
+          ))}
         </div>
 
-        {/* Bottom Bar */}
-        <div className="border-t border-[#dadce0] pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-[#5f6368]">
-            © {currentYear} Archomak. All rights reserved.
-          </p>
+        <div className="mt-12 pt-6 border-t border-[var(--line)] flex flex-col sm:flex-row justify-between gap-4 text-sm text-[var(--ink-3)]">
+          <p>© {currentYear} Archomak</p>
           <div className="flex items-center gap-6">
-            <Link
-              href="/privacy"
-              className="footer-link text-sm text-[#5f6368]"
-            >
+            <Link href="/privacy" className="hover:text-[var(--ink)] transition-colors">
               Privacy
             </Link>
-            <Link href="/terms" className="footer-link text-sm text-[#5f6368]">
+            <Link href="/terms" className="hover:text-[var(--ink)] transition-colors">
               Terms
             </Link>
           </div>

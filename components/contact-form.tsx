@@ -54,12 +54,12 @@ export default function ContactForm({
       <div className="flex flex-col items-center justify-center py-16 gap-4 text-center">
         <CheckCircle size={40} className="text-[#34a853]" />
         <h3
-          className="text-xl font-medium text-[#202124]"
+          className="text-xl font-medium text-[var(--ink)]"
           style={{ fontFamily: "var(--font-display)" }}
         >
           Message sent
         </h3>
-        <p className="text-sm text-[#5f6368] max-w-xs">
+        <p className="text-sm text-[var(--ink-2)] max-w-xs">
           We'll get back to you within one business day.
         </p>
       </div>
@@ -67,7 +67,7 @@ export default function ContactForm({
   }
 
   const field =
-    "w-full bg-white border border-[#dadce0] rounded-lg px-4 py-3 text-sm text-[#202124] placeholder:text-[#80868b] focus:outline-none focus:border-[#1a73e8] focus:ring-1 focus:ring-[#1a73e8]/30 transition-all";
+    "w-full bg-white border border-[var(--border-strong)] rounded-lg px-4 py-3 text-sm text-[var(--ink)] placeholder:text-[var(--ink-3)] focus:outline-none focus:border-[var(--ink)] focus:ring-1 focus:ring-[var(--ink)]/30 transition-all";
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-4">

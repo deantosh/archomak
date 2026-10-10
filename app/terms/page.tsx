@@ -42,22 +42,22 @@ const sections = [
 
 export default function TermsPage() {
   return (
-    <div className="bg-white text-[#202124] min-h-screen">
+    <div className="bg-white text-[var(--ink)] min-h-screen">
       <Navigation />
       <article className="pt-36 pb-24">
         <div className="max-w-3xl mx-auto px-6 lg:px-8">
-          <p className="text-sm font-medium text-[#1a73e8] mb-5">Terms</p>
+          <p className="text-sm font-medium text-[var(--ink)] mb-5">Terms</p>
           <h1
             className="text-h1 mb-3"
             style={{ fontFamily: "var(--font-display)" }}
           >
             Terms of Service
           </h1>
-          <p className="text-sm text-[#80868b] mb-12">
+          <p className="text-sm text-[var(--ink-3)] mb-12">
             Last updated 12 July 2026
           </p>
 
-          <p className="text-lg text-[#5f6368] leading-relaxed mb-10">
+          <p className="text-lg text-[var(--ink-2)] leading-relaxed mb-10">
             These terms cover your use of archomak.com.
           </p>
 
@@ -70,18 +70,18 @@ export default function TermsPage() {
                 >
                   {s.heading}
                 </h2>
-                <p className="text-base text-[#5f6368] leading-relaxed">
+                <p className="text-base text-[var(--ink-2)] leading-relaxed">
                   {s.body}
                 </p>
               </div>
             ))}
           </div>
 
-          <p className="text-base text-[#5f6368] leading-relaxed mt-10">
+          <p className="text-base text-[var(--ink-2)] leading-relaxed mt-10">
             Questions? Email{" "}
             <a
               href="mailto:admin@archomak.com"
-              className="text-[#1a73e8] hover:underline"
+              className="text-[var(--ink)] hover:underline"
             >
               admin@archomak.com
             </a>

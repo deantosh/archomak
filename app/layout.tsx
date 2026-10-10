@@ -1,27 +1,21 @@
 import type { Metadata } from "next";
-import { Outfit, Roboto, Roboto_Mono } from "next/font/google";
+import { Instrument_Sans } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
+import { products } from "@/lib/products";
+import { organizationId } from "@/lib/seo";
 
-const roboto = Roboto({
+const instrumentSans = Instrument_Sans({
   subsets: ["latin"],
-  variable: "--font-roboto",
-  weight: ["300", "400", "500", "700"],
-});
-const robotoMono = Roboto_Mono({
-  subsets: ["latin"],
-  variable: "--font-roboto-mono",
-});
-const outfit = Outfit({
-  subsets: ["latin"],
-  variable: "--font-outfit",
+  variable: "--font-instrument",
   weight: ["400", "500", "600", "700"],
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://archomak.com";
-const defaultTitle = "Archomak | Building focused software products.";
+const defaultTitle =
+  "Archomak | Software that simplifies everyday business operations";
 const defaultDescription =
-  "Archomak is a product company building focused software products for teams solving practical problems with clarity and care.";
+  "Archomak builds and runs software products for businesses across Africa, including Kunanyesha and Sikakoraa.";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
@@ -32,15 +26,13 @@ export const metadata: Metadata = {
   applicationName: "Archomak",
   keywords: [
     "Archomak",
-    "product company",
-    "software products",
-    "product studio",
-    "software development",
-    "software engineering",
-    "weather intelligence",
-    "service commerce",
-    "artificial intelligence",
-    "workflow automation",
+    "Kunanyesha",
+    "Sikakoraa",
+    "business software Africa",
+    "software company Kenya",
+    "Kenya weather forecast",
+    "online booking Kenya",
+    "M-Pesa payments",
   ],
   authors: [{ name: "Archomak" }],
   creator: "Archomak",
@@ -68,10 +60,10 @@ export const metadata: Metadata = {
     locale: "en_US",
     images: [
       {
-        url: "/photos/hero.jpg",
-        width: 2000,
-        height: 1335,
-        alt: "Archomak building technology products",
+        url: "/products/sikakoraa.jpg",
+        width: 1440,
+        height: 900,
+        alt: "Sikakoraa, a product by Archomak",
       },
     ],
   },
@@ -79,7 +71,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: defaultTitle,
     description: defaultDescription,
-    images: ["/photos/hero.jpg"],
+    images: ["/products/sikakoraa.jpg"],
   },
   category: "technology",
   icons: {
@@ -97,11 +89,21 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": organizationId,
     name: "Archomak",
     url: siteUrl,
-    logo: `${siteUrl}/logo/favico.png`,
+    logo: `${siteUrl}/logo/logo.png`,
     description: defaultDescription,
+    slogan: "Software that simplifies everyday business operations.",
     email: "admin@archomak.com",
+    address: { "@type": "PostalAddress", addressCountry: "KE" },
+    areaServed: { "@type": "Place", name: "Africa" },
+    brand: products.map((p) => ({
+      "@type": "Brand",
+      name: p.name,
+      url: p.website,
+      logo: `${siteUrl}${p.screenshot}`,
+    })),
     founder: [
       { "@type": "Person", name: "Lucky Archibong" },
       { "@type": "Person", name: "Deantosh Daiddoh" },
@@ -114,6 +116,7 @@ export default function RootLayout({
     sameAs: [
       "https://x.com/archomak.tech",
       "https://www.linkedin.com/company/archomak",
+      ...products.map((p) => p.website),
     ],
   };
 
@@ -124,14 +127,14 @@ export default function RootLayout({
     url: siteUrl,
     description: defaultDescription,
     inLanguage: "en-US",
-    publisher: { "@type": "Organization", name: "Archomak" },
+    publisher: { "@id": organizationId },
   };
 
   return (
     <html lang="en">
       <body
         suppressHydrationWarning
-        className={`${roboto.variable} ${robotoMono.variable} ${outfit.variable} font-sans antialiased`}
+        className={`${instrumentSans.variable} font-sans antialiased`}
       >
         <script
           type="application/ld+json"

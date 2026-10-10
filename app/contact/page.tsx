@@ -16,8 +16,8 @@ const contactInfo = [
   },
   {
     icon: MapPin,
-    label: "Headquarters",
-    value: "Global · Building for the world",
+    label: "Registered in",
+    value: "Kenya · Serving businesses across Africa",
     href: null,
   },
 ];
@@ -33,13 +33,13 @@ const socials = [
 
 export default function ContactPage() {
   return (
-    <div className="bg-white text-[#202124] min-h-screen">
+    <div className="bg-white text-[var(--ink)] min-h-screen overflow-x-hidden">
       <Navigation />
 
-      <section className="pt-36 pb-8 border-b border-[#e8eaed]">
+      <section className="pt-36 pb-8 border-b border-[var(--line)]">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
           <motion.p
-            className="text-sm font-medium text-[#1a73e8] mb-5"
+            className="text-sm font-medium text-[var(--ink)] mb-5"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
           >
@@ -52,7 +52,7 @@ export default function ContactPage() {
             transition={{ delay: 0.1 }}
           >
             Let&apos;s start a{" "}
-            <span className="text-[#1a73e8]">conversation.</span>
+            <span className="text-[var(--ink)]">conversation.</span>
           </motion.h1>
         </div>
       </section>
@@ -65,7 +65,7 @@ export default function ContactPage() {
             whileInView="visible"
             viewport={viewportOnce}
           >
-            <p className="text-sm text-[#5f6368] leading-relaxed mb-10 max-w-sm">
+            <p className="text-sm text-[var(--ink-2)] leading-relaxed mb-10 max-w-sm">
               Share Your thoughts, ideas, or inquiries with us. We&apos;re here to listen.
             </p>
             <div className="flex flex-col gap-6 mb-10">
@@ -73,22 +73,22 @@ export default function ContactPage() {
                 const Icon = item.icon;
                 return (
                   <div key={item.label} className="flex items-start gap-4">
-                    <div className="w-9 h-9 rounded-full bg-[#e8f0fe] flex items-center justify-center text-[#1a73e8] flex-shrink-0">
+                    <div className="w-9 h-9 rounded-full bg-[var(--surface-alt)] flex items-center justify-center text-[var(--ink)] flex-shrink-0">
                       <Icon size={16} />
                     </div>
                     <div>
-                      <p className="text-xs text-[#80868b] uppercase tracking-wider mb-1">
+                      <p className="text-xs text-[var(--ink-3)] uppercase tracking-wider mb-1">
                         {item.label}
                       </p>
                       {item.href ? (
                         <a
                           href={item.href}
-                          className="text-sm text-[#202124] hover:text-[#1a73e8] transition-colors"
+                          className="text-sm text-[var(--ink)] hover:text-[var(--ink)] transition-colors"
                         >
                           {item.value}
                         </a>
                       ) : (
-                        <p className="text-sm text-[#5f6368]">{item.value}</p>
+                        <p className="text-sm text-[var(--ink-2)]">{item.value}</p>
                       )}
                     </div>
                   </div>
@@ -96,7 +96,7 @@ export default function ContactPage() {
               })}
             </div>
             <div>
-              <p className="text-xs text-[#80868b] uppercase tracking-wider mb-4">
+              <p className="text-xs text-[var(--ink-3)] uppercase tracking-wider mb-4">
                 Follow us
               </p>
               <div className="flex items-center gap-3">
@@ -107,7 +107,7 @@ export default function ContactPage() {
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={label}
-                    className="flex items-center justify-center w-9 h-9 rounded-full border border-[#dadce0] text-[#5f6368] hover:bg-[#e8f0fe] hover:text-[#1a73e8] transition-all"
+                    className="flex items-center justify-center w-9 h-9 rounded-full border border-[var(--border-strong)] text-[var(--ink-2)] hover:bg-[var(--surface-alt)] hover:text-[var(--ink)] transition-all"
                   >
                     <Icon size={15} />
                   </a>
@@ -115,7 +115,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="mt-8">
-              <p className="text-xs text-[#80868b] leading-relaxed">
+              <p className="text-xs text-[var(--ink-3)] leading-relaxed">
                 We respond within one business day.
               </p>
             </div>
